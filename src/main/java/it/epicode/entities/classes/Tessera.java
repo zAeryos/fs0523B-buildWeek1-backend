@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.classes;
 
 import jakarta.persistence.*;
 
@@ -8,14 +8,16 @@ import java.time.LocalDate;
 public class Tessera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int             id;
     @OneToOne
     @Column(nullable = false)
-    private Utente utente;
+    private Utente          utente;
     @Column(name = "data_emissione", nullable = false)
-    private LocalDate dataEmissione;
+    private LocalDate       dataEmissione;
     @Column(nullable = false)
-    private LocalDate scadenza;
+    private LocalDate       scadenza;
+    @OneToOne(mappedBy = "abbonamento_fk")
+    private Abbonamento     abbonamento;
 
     public Tessera() {
     }

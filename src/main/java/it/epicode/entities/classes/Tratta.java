@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.classes;
 
 import jakarta.persistence.*;
 
@@ -7,13 +7,13 @@ import jakarta.persistence.*;
 public class Tratta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int     id;
     @Column(name = "zona_di_partenza", nullable = false)
-    private String zonaDiPartenza;
+    private String  zonaDiPartenza;
     @Column(nullable = false)
-    private String capolinea;
+    private String  capolinea;
     @Column(name = "tempo_medio_percorrenza")
-    private int tempoMedioPercorrenza;
+    private int     tempoMedioPercorrenza;
 
     public Tratta() {
     }

@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.enums;
 
 public enum StatoAttivita {
     ATTIVO,

@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.classes.superclasses;
 
 import jakarta.persistence.*;
 
@@ -10,9 +10,9 @@ import java.time.LocalDate;
 public abstract class PuntoDiEmissione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int         id;
     @Column(name = "data_emissione")
-    private LocalDate dataEmissione;
+    private LocalDate   dataEmissione;
 
 
     public PuntoDiEmissione(LocalDate dataEmissione) {

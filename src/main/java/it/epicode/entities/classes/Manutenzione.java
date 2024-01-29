@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.classes;
 
 import jakarta.persistence.*;
 
@@ -9,11 +9,11 @@ import java.time.LocalDate;
 public class Manutenzione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int         id;
     @Column(name = "data_inizio")
-    private LocalDate dataInizio;
+    private LocalDate   dataInizio;
     @Column(name = "data_fine")
-    private LocalDate dataFine;
+    private LocalDate   dataFine;
 
     public Manutenzione(LocalDate dataInizio) {
         this.dataInizio = dataInizio;

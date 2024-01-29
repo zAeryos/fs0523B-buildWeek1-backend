@@ -1,5 +1,6 @@
-package it.epicode.entities;
+package it.epicode.entities.classes;
 
+import it.epicode.entities.enums.Sesso;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -10,22 +11,22 @@ public class Utente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int         id;
     @Column(nullable = false, length = 30)
-    private String nome;
+    private String      nome;
     @Column(nullable = false, length = 30)
-    private String cognome;
+    private String      cognome;
     @Column(name = "data_di_nascita", nullable = false)
-    private LocalDate dataDiNascita;
+    private LocalDate   dataDiNascita;
     @Enumerated(EnumType.STRING)
-    private Sesso sesso;
-    private String indirizzo;
+    private Sesso       sesso;
+    private String      indirizzo;
     @Column(name = "numero_telefono")
-    private int numeroTelefono;
+    private int         numeroTelefono;
     @Column(nullable = false)
-    private String email;
+    private String      email;
     @OneToOne(mappedBy = "tessera_fk")
-    private Tessera tessera;
+    private Tessera     tessera;
 
     public Utente() {
     }

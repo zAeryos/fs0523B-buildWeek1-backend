@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.classes.superclasses;
 
 import jakarta.persistence.*;
 
@@ -11,12 +11,12 @@ public abstract class TitoloEmesso {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int                 id;
     @Column(name = "punto_di_emissione")
-    private PuntoDiEmissione puntoDiEmissione;
+    private PuntoDiEmissione    puntoDiEmissione;
     @Column(name = "data_emissione")
-    private LocalDate dataEmissione;
-    private LocalDate scadenza;
+    private LocalDate           dataEmissione;
+    private LocalDate           scadenza;
 
     public TitoloEmesso() {
     }

@@ -1,5 +1,7 @@
-package it.epicode.entities;
+package it.epicode.entities.classes;
 
+import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
+import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -7,7 +9,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "biglietto")
-public class Biglietto extends TitoloEmesso{
+public class Biglietto extends TitoloEmesso {
 
     private boolean valido;
 

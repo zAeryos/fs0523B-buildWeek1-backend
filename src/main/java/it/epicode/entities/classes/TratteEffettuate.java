@@ -1,4 +1,4 @@
-package it.epicode.entities;
+package it.epicode.entities.classes;
 
 import jakarta.persistence.*;
 
@@ -10,13 +10,13 @@ public class TratteEffettuate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private int         id;
     @Column(nullable = false)
-    private Mezzo mezzo;
+    private Mezzo       mezzo;
     @Column(name = "data_tratta", nullable = false)
-    private LocalDate dataTratta;
+    private LocalDate   dataTratta;
     @Column(name = "tempo_effettivo_tratta", nullable = false)
-    private int tempoEffettivoTratta;
+    private int         tempoEffettivoTratta;
 
     public TratteEffettuate() {
     }
