@@ -1,6 +1,6 @@
 package it.epicode.dao;
 
-import it.epicode.entities.classes.TratteEffettuate;
+import it.epicode.entities.classes.TrattaEffettuata;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -14,25 +14,25 @@ public class TratteEffettuateDAO {
         emf = Persistence.createEntityManagerFactory("dbtrasportopubblico");
         em  = emf.createEntityManager();
     }
-    public void create(TratteEffettuate tratteEffettuate) {
+    public void create(TrattaEffettuata trattaEffettuata) {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
-        em.persist(tratteEffettuate);
+        em.persist(trattaEffettuata);
         et.commit();
 
     }
 
-    public TratteEffettuate getById(int id) {
-        return em.find(TratteEffettuate.class, id);
+    public TrattaEffettuata getById(int id) {
+        return em.find(TrattaEffettuata.class, id);
     }
 
     public void delete(int id) {
         EntityTransaction   et                = em.getTransaction();
-        TratteEffettuate    tratteEffettuate  = getById(id);
+        TrattaEffettuata trattaEffettuata = getById(id);
 
         et.begin();
-        em.remove(tratteEffettuate);
+        em.remove(trattaEffettuata);
         et.commit();
 
     }

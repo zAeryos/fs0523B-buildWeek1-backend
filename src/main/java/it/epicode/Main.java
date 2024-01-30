@@ -1,15 +1,11 @@
 package it.epicode;
 
-import it.epicode.dao.MezzoDAO;
-import it.epicode.dao.PuntoDiEmissioneDAO;
-import it.epicode.dao.TitoloEmessoDAO;
-import it.epicode.dao.UtenteDAO;
-import it.epicode.entities.classes.Abbonamento;
-import it.epicode.entities.classes.Biglietto;
-import it.epicode.entities.classes.DistributoreAutomatico;
-import it.epicode.entities.classes.Utente;
+import it.epicode.dao.*;
+import it.epicode.entities.classes.*;
 import it.epicode.entities.enums.Periodicita;
 import it.epicode.entities.enums.StatoAttivita;
+import it.epicode.entities.enums.StatoServizio;
+import it.epicode.entities.enums.TipoMezzo;
 
 import java.time.LocalDate;
 
@@ -20,6 +16,10 @@ public class Main {
         TitoloEmessoDAO      titoloEmessoDAO       = new TitoloEmessoDAO();
         UtenteDAO            utenteDAO             = new UtenteDAO();
         MezzoDAO             mezzoDAO              = new MezzoDAO();
+        TrattaDAO            trattaDAO             = new TrattaDAO();
+        ManutenzioneDAO      manutenzioneDAO       = new ManutenzioneDAO();
+        TesseraDAO           tesseraDAO            = new TesseraDAO();
+        TratteEffettuateDAO  tratteEffettuateDAO   = new TratteEffettuateDAO();
 
         DistributoreAutomatico distributoreAutomatico = new DistributoreAutomatico(StatoAttivita.ATTIVO);
 
@@ -30,8 +30,36 @@ public class Main {
         Abbonamento abbonamento = new Abbonamento(distributoreAutomatico, LocalDate.now(), Periodicita.ANNUALE);
 
 
-        puntoDiEmissioneDAO.create(distributoreAutomatico);
-        titoloEmessoDAO.create(abbonamento);
+        Mezzo mezzo = new Mezzo(50, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS);
+
+
+        Tratta tratta = new Tratta("Parigi","Roma",5000);
+        TrattaEffettuata trattaEffettuata = new TrattaEffettuata(mezzoDAO.getById(1),LocalDate.now(),6000);
+
+//       TrattaEffettuata trattaEffettuata = mezzo.eseguiTratta(tratta);
+
+
+
+
+
+
+        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzoDAO.getById(1));
+
+        Tessera tessera = new Tessera(utenteDAO.getById(1));
+
+
+
+//        tesseraDAO.create(tessera);
+//        manutenzioneDAO.create(manutenzione);
+//        mezzoDAO.create(mezzo);
+        trattaDAO.create(tratta);
+//        tratteEffettuateDAO.create(trattaEffettuata);
+
+
+
+
+//        puntoDiEmissioneDAO.create(distributoreAutomatico);
+//        titoloEmessoDAO.create(abbonamento);
 
 
 

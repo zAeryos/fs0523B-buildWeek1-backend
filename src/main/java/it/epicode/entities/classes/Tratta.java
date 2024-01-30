@@ -2,6 +2,8 @@ package it.epicode.entities.classes;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "tratta")
 public class Tratta {
@@ -17,6 +19,8 @@ public class Tratta {
     @ManyToOne
     @JoinColumn(name = "mezzo_fk")
     private Mezzo mezzo;
+//    @OneToMany
+//    private List<Tratta> tratte;
 
     public Tratta() {
     }

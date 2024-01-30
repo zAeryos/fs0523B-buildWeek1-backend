@@ -4,6 +4,8 @@ import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,22 +25,22 @@ public class Mezzo {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_mezzo")
     private TipoMezzo               tipoMezzo;
-    @OneToMany(mappedBy = "mezzo")
-    private List<Tratta>            tratte;
+//    @OneToMany(mappedBy = "mezzo")
+//    private List<Tratta>            tratte;
     @OneToMany(mappedBy = "mezzo")
     @Column(name = "tratte_effettuate")
-    private List<TratteEffettuate>  tratteEffettuate;
+    private List<TrattaEffettuata> trattaEffettuata;
 
     public Mezzo() {
     }
 
-    public Mezzo(int capienza, StatoServizio statoServizio, List<Manutenzione> manutenzioni, TipoMezzo tipoMezzo, List<Tratta> tratte, List<TratteEffettuate> tratteEffettuate) {
+    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo) {
         this.capienza = capienza;
         this.statoServizio = statoServizio;
-        this.manutenzioni = manutenzioni;
+        this.manutenzioni = new ArrayList<>();
         this.tipoMezzo = tipoMezzo;
-        this.tratte = tratte;
-        this.tratteEffettuate = tratteEffettuate;
+//        this.tratte = new ArrayList<>();
+        this.trattaEffettuata = new ArrayList<>();
     }
 
     public int getCodiceVeicolo() {
@@ -65,8 +67,8 @@ public class Mezzo {
         return manutenzioni;
     }
 
-    public void setManutenzioni(List<Manutenzione> manutenzioni) {
-        this.manutenzioni = manutenzioni;
+    public void setManutenzioni(Manutenzione manutenzione) {
+        this.manutenzioni.add(manutenzione);
     }
 
     public TipoMezzo getTipoMezzo() {
@@ -77,19 +79,24 @@ public class Mezzo {
         this.tipoMezzo = tipoMezzo;
     }
 
-    public List<Tratta> getTratte() {
-        return tratte;
+//    public List<Tratta> getTratte() {
+//        return tratte;
+//    }
+//
+//    public void setTratte(Tratta tratta) {
+//        this.tratte.add(tratta);
+//    }
+
+    public List<TrattaEffettuata> getTratteEffettuate() {
+        return trattaEffettuata;
     }
 
-    public void setTratte(List<Tratta> tratte) {
-        this.tratte = tratte;
+    public void setTratteEffettuate(TrattaEffettuata trattaEffettuata) {
+        this.trattaEffettuata.add(trattaEffettuata);
     }
 
-    public List<TratteEffettuate> getTratteEffettuate() {
-        return tratteEffettuate;
-    }
-
-    public void setTratteEffettuate(List<TratteEffettuate> tratteEffettuate) {
-        this.tratteEffettuate = tratteEffettuate;
-    }
+//    public TrattaEffettuata eseguiTratta(Tratta tratta){
+//        TrattaEffettuata trattaEffettuata = new TrattaEffettuata(tratta,this,LocalDate.now(),6000);
+//        return trattaEffettuata;
+//    }
 }
