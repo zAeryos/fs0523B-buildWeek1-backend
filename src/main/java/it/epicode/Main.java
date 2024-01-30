@@ -25,11 +25,11 @@ public class Main {
         Utente utente2 = new Utente("Davide", "Jackowski", LocalDate.of(1998, 8,13), "davidejackowski@gmail.com");
         Utente utente3 = new Utente("Emanuele", "Barone", LocalDate.of(1996, 5, 22), "barone.emanuele8@gmail.com");
 
-        Abbonamento abbonamento = new Abbonamento(distributoreAutomatico, LocalDate.now(), Periodicita.MENSILE);
+        Abbonamento abbonamento = new Abbonamento(distributoreAutomatico, LocalDate.now(), Periodicita.ANNUALE);
 
-        System.out.println(abbonamento.toString());
-//        puntoDiEmissioneDAO.create(distributoreAutomatico);
-//        titoloEmessoDAO.create(abbonamento);
+
+        puntoDiEmissioneDAO.create(distributoreAutomatico);
+        titoloEmessoDAO.create(abbonamento);
 
 
 

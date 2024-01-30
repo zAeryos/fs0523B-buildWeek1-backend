@@ -20,7 +20,7 @@ public class Abbonamento extends TitoloEmesso {
         super(puntoDiEmissione, dataEmissione);
         this.periodicita = periodicita;
         this.scadenza = LocalDate.now();
-//        this.scadenza = calcolaScadenza();
+        this.scadenza = calcolaScadenza();
     }
 
     public Abbonamento() {
@@ -37,13 +37,13 @@ public class Abbonamento extends TitoloEmesso {
 
     public LocalDate calcolaScadenza () {
         if (periodicita == Periodicita.SETTIMANALE) {
-            this.scadenza = this.scadenza.plusDays(7);
+            return this.scadenza = this.scadenza.plusDays(7);
         } else if (periodicita == Periodicita.MENSILE) {
-            this.scadenza = this.scadenza.plusDays(31);
+            return this.scadenza = this.scadenza.plusDays(30);
         } else if (periodicita == Periodicita.ANNUALE) {
-            this.scadenza = this.scadenza.plusDays(365);
+            return this.scadenza = this.scadenza.plusDays(365);
         }
-        return null;
+        return this.scadenza;
     }
 
     public Tessera getTessera() {
