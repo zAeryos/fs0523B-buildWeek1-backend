@@ -14,8 +14,7 @@ public class DistributoreAutomatico extends PuntoDiEmissione {
     @Enumerated(EnumType.STRING)
     private StatoAttivita statoAttivita;
 
-    public DistributoreAutomatico(LocalDate dataEmissione, StatoAttivita statoAttivita) {
-        super(dataEmissione);
+    public DistributoreAutomatico(StatoAttivita statoAttivita) {
         this.statoAttivita = statoAttivita;
     }
 

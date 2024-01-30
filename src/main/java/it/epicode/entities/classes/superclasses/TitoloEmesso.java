@@ -17,7 +17,6 @@ public abstract class TitoloEmesso {
     private PuntoDiEmissione    puntoDiEmissione;
     @Column(name = "data_emissione")
     private LocalDate           dataEmissione;
-    private LocalDate           scadenza;
 
     public TitoloEmesso() {
     }
@@ -47,11 +46,4 @@ public abstract class TitoloEmesso {
         this.dataEmissione = dataEmissione;
     }
 
-    public LocalDate getScadenza() {
-        return scadenza;
-    }
-
-    public void setScadenza(LocalDate scadenza) {
-        this.scadenza = scadenza;
-    }
 }

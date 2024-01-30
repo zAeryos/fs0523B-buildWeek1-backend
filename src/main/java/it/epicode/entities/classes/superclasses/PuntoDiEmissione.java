@@ -3,6 +3,7 @@ package it.epicode.entities.classes.superclasses;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -12,28 +13,27 @@ public abstract class PuntoDiEmissione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int         id;
-    @Column(name = "data_emissione")
-    private LocalDate   dataEmissione;
+
+//    @Column(name = "data_emissione")
+//    private List<LocalDate>   dataEmissione;
 
     @OneToMany(mappedBy = "puntoDiEmissione")
-    private List<TitoloEmesso> titoliEmessi;
-
-
-    public PuntoDiEmissione(LocalDate dataEmissione) {
-        this.dataEmissione = dataEmissione;
-    }
+    @Column(name = "titoli_emessi")
+    private List<TitoloEmesso> titoliEmessi;  //TODO
 
     public PuntoDiEmissione() {
+        this.titoliEmessi = new ArrayList<>();
     }
 
     public int getId() {
         return id;
     }
-    public LocalDate getDataEmissione() {
-        return dataEmissione;
+
+    public List<TitoloEmesso> getTitoliEmessi() {
+        return titoliEmessi;
     }
 
-    public void setDataEmissione(LocalDate dataEmissione) {
-        this.dataEmissione = dataEmissione;
+    public void setTitoliEmessi(TitoloEmesso titoloEmesso) {
+        this.titoliEmessi.add(titoloEmesso);
     }
 }
