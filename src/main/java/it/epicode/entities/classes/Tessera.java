@@ -9,23 +9,23 @@ public class Tessera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int             id;
-    @OneToOne
-    @Column(nullable = false)
+    @OneToOne(mappedBy = "tessera")
     private Utente          utente;
     @Column(name = "data_emissione", nullable = false)
     private LocalDate       dataEmissione;
     @Column(nullable = false)
     private LocalDate       scadenza;
-    @OneToOne(mappedBy = "abbonamento_fk")
+    @OneToOne
+    @JoinColumn(name = "abbonamento_fk")
     private Abbonamento     abbonamento;
 
     public Tessera() {
     }
 
-    public Tessera(Utente utente, LocalDate dataEmissione, LocalDate scadenza) {
+    public Tessera(Utente utente) {
         this.utente = utente;
-        this.dataEmissione = dataEmissione;
-        this.scadenza = scadenza;
+        this.dataEmissione = LocalDate.now();
+        this.scadenza = this.dataEmissione.plusDays(365);
     }
 
     public int getId() {
@@ -53,5 +53,10 @@ public class Tessera {
 
     public void setScadenza(LocalDate scadenza) {
         this.scadenza = scadenza;
+    }
+
+    public void rinnovaTessera() {
+        LocalDate nuovaDataScadenza = LocalDate.now();
+        this.scadenza = this.scadenza.plusDays(365);
     }
 }

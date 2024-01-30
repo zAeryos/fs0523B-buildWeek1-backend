@@ -5,6 +5,7 @@ import it.epicode.entities.enums.StatoAttivita;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 @Entity
 @Table(name = "distributore_automatico")
@@ -27,5 +28,9 @@ public class DistributoreAutomatico extends PuntoDiEmissione {
 
     public void setStatoAttivita(StatoAttivita statoAttivita) {
         this.statoAttivita = statoAttivita;
+    }
+
+    public void stampaBiglietto() {
+        Scanner scanner = new Scanner(System.in);
     }
 }

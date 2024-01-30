@@ -14,6 +14,9 @@ public class Manutenzione {
     private LocalDate   dataInizio;
     @Column(name = "data_fine")
     private LocalDate   dataFine;
+    @ManyToOne()
+    @JoinColumn(name = "mezzo_fk")
+    private Mezzo       mezzo;
 
     public Manutenzione(LocalDate dataInizio) {
         this.dataInizio = dataInizio;

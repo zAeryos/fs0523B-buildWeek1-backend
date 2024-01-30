@@ -14,7 +14,7 @@ public class UtenteDAO {
         emf = Persistence.createEntityManagerFactory("dbtrasportopubblico");
         em  = emf.createEntityManager();
     }
-    public void create(Utente ...utente) {
+    public void create(Utente utente) {
         EntityTransaction et = em.getTransaction();
 
         et.begin();

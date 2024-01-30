@@ -11,7 +11,8 @@ public class TratteEffettuate {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int         id;
-    @Column(nullable = false)
+    @ManyToOne()
+    @JoinColumn(name = "mezzo_fk", nullable = false)
     private Mezzo       mezzo;
     @Column(name = "data_tratta", nullable = false)
     private LocalDate   dataTratta;

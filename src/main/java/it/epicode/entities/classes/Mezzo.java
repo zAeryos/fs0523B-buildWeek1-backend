@@ -12,15 +12,84 @@ public class Mezzo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "codice_veicolo")
     private int                     codiceVeicolo;
     private int                     capienza;
     @Enumerated(EnumType.STRING)
+    @Column(name = "stato_servizio")
     private StatoServizio           statoServizio;
+    @OneToMany(mappedBy = "mezzo")
     private List<Manutenzione>      manutenzioni;
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_mezzo")
     private TipoMezzo               tipoMezzo;
-    private Tratta                  tratta;
+    @OneToMany(mappedBy = "mezzo")
+    private List<Tratta>            tratte;
+    @OneToMany(mappedBy = "mezzo")
     @Column(name = "tratte_effettuate")
     private List<TratteEffettuate>  tratteEffettuate;
 
+    public Mezzo() {
+    }
+
+    public Mezzo(int capienza, StatoServizio statoServizio, List<Manutenzione> manutenzioni, TipoMezzo tipoMezzo, List<Tratta> tratte, List<TratteEffettuate> tratteEffettuate) {
+        this.capienza = capienza;
+        this.statoServizio = statoServizio;
+        this.manutenzioni = manutenzioni;
+        this.tipoMezzo = tipoMezzo;
+        this.tratte = tratte;
+        this.tratteEffettuate = tratteEffettuate;
+    }
+
+    public int getCodiceVeicolo() {
+        return codiceVeicolo;
+    }
+
+    public int getCapienza() {
+        return capienza;
+    }
+
+    public void setCapienza(int capienza) {
+        this.capienza = capienza;
+    }
+
+    public StatoServizio getStatoServizio() {
+        return statoServizio;
+    }
+
+    public void setStatoServizio(StatoServizio statoServizio) {
+        this.statoServizio = statoServizio;
+    }
+
+    public List<Manutenzione> getManutenzioni() {
+        return manutenzioni;
+    }
+
+    public void setManutenzioni(List<Manutenzione> manutenzioni) {
+        this.manutenzioni = manutenzioni;
+    }
+
+    public TipoMezzo getTipoMezzo() {
+        return tipoMezzo;
+    }
+
+    public void setTipoMezzo(TipoMezzo tipoMezzo) {
+        this.tipoMezzo = tipoMezzo;
+    }
+
+    public List<Tratta> getTratte() {
+        return tratte;
+    }
+
+    public void setTratte(List<Tratta> tratte) {
+        this.tratte = tratte;
+    }
+
+    public List<TratteEffettuate> getTratteEffettuate() {
+        return tratteEffettuate;
+    }
+
+    public void setTratteEffettuate(List<TratteEffettuate> tratteEffettuate) {
+        this.tratteEffettuate = tratteEffettuate;
+    }
 }

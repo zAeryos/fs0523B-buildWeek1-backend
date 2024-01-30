@@ -14,6 +14,9 @@ public class Tratta {
     private String  capolinea;
     @Column(name = "tempo_medio_percorrenza")
     private int     tempoMedioPercorrenza;
+    @ManyToOne
+    @JoinColumn(name = "mezzo_fk")
+    private Mezzo mezzo;
 
     public Tratta() {
     }

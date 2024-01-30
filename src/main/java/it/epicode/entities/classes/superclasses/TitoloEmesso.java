@@ -12,7 +12,8 @@ public abstract class TitoloEmesso {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int                 id;
-    @Column(name = "punto_di_emissione")
+    @ManyToOne
+    @JoinColumn(name = "punto_di_emissione_fk")
     private PuntoDiEmissione    puntoDiEmissione;
     @Column(name = "data_emissione")
     private LocalDate           dataEmissione;

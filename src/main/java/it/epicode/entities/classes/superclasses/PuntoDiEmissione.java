@@ -3,6 +3,7 @@ package it.epicode.entities.classes.superclasses;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "punto_di_emissione")
@@ -13,6 +14,9 @@ public abstract class PuntoDiEmissione {
     private int         id;
     @Column(name = "data_emissione")
     private LocalDate   dataEmissione;
+
+    @OneToMany(mappedBy = "puntoDiEmissione")
+    private List<TitoloEmesso> titoliEmessi;
 
 
     public PuntoDiEmissione(LocalDate dataEmissione) {

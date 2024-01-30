@@ -25,7 +25,8 @@ public class Utente {
     private int         numeroTelefono;
     @Column(nullable = false)
     private String      email;
-    @OneToOne(mappedBy = "tessera_fk")
+    @OneToOne()
+    @JoinColumn(name = "tessera_fk")
     private Tessera     tessera;
 
     public Utente() {
