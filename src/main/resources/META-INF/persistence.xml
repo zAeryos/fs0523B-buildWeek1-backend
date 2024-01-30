@@ -8,7 +8,7 @@
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/dbtrasportopubblico"/>
             <property name="jakarta.persistence.jdbc.user" value="postgres"/>
-            <property name="jakarta.persistence.jdbc.password" value="justarandompass!"/>
+            <property name="jakarta.persistence.jdbc.password" value="ultras.7892"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="update"/>
             <property name="hibernate.default_schema" value="public" />
             <property name="hibernate.hbm2ddl.auto" value="update" />

@@ -1,5 +1,6 @@
 package it.epicode;
 
+import it.epicode.dao.MezzoDAO;
 import it.epicode.dao.PuntoDiEmissioneDAO;
 import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.dao.UtenteDAO;
@@ -18,6 +19,7 @@ public class Main {
         PuntoDiEmissioneDAO  puntoDiEmissioneDAO   = new PuntoDiEmissioneDAO();
         TitoloEmessoDAO      titoloEmessoDAO       = new TitoloEmessoDAO();
         UtenteDAO            utenteDAO             = new UtenteDAO();
+        MezzoDAO             mezzoDAO              = new MezzoDAO();
 
         DistributoreAutomatico distributoreAutomatico = new DistributoreAutomatico(StatoAttivita.ATTIVO);
 
