@@ -12,7 +12,7 @@ import java.time.LocalDate;
 public class Abbonamento extends TitoloEmesso {
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
-    @OneToOne(mappedBy = "abbonamento")     // TODO
+    @OneToOne(mappedBy = "abbonamento")     // TODO.
     private Tessera     tessera;
     private LocalDate   scadenza;
 
