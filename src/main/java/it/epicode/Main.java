@@ -31,23 +31,14 @@ public class Main {
         puntoDiEmissioneDAO.create(distributoreAutomatico);
         titoloEmessoDAO.create(abbonamento);
 
+        Biglietto biglietto = new Biglietto(distributoreAutomatico, LocalDate.now());
 
+        distributoreAutomatico.setTitoliEmessi(biglietto);
 
+        puntoDiEmissioneDAO.create(distributoreAutomatico);
+        titoloEmessoDAO.create(biglietto);
 
-
-
-
-
-
-//
-//        Biglietto biglietto = new Biglietto(distributoreAutomatico, LocalDate.now());
-//
-//        distributoreAutomatico.setTitoliEmessi(biglietto);
-//
-//        puntoDiEmissioneDAO.create(distributoreAutomatico);
-//        titoloEmessoDAO.create(biglietto);
-//
-//        System.out.println(distributoreAutomatico.getTitoliEmessi());
+        System.out.println(distributoreAutomatico.getTitoliEmessi());
 
     }
 }

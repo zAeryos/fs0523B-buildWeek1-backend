@@ -4,6 +4,7 @@ import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -32,10 +33,10 @@ public class Mezzo {
     public Mezzo() {
     }
 
-    public Mezzo(int capienza, StatoServizio statoServizio, List<Manutenzione> manutenzioni, TipoMezzo tipoMezzo, List<Tratta> tratte, List<TratteEffettuate> tratteEffettuate) {
+    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo, List<Tratta> tratte, List<TratteEffettuate> tratteEffettuate) {
         this.capienza = capienza;
         this.statoServizio = statoServizio;
-        this.manutenzioni = manutenzioni;
+        this.manutenzioni = new ArrayList<>();
         this.tipoMezzo = tipoMezzo;
         this.tratte = tratte;
         this.tratteEffettuate = tratteEffettuate;
