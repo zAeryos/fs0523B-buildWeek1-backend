@@ -24,22 +24,21 @@ public class Mezzo {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_mezzo")
     private TipoMezzo               tipoMezzo;
-    @OneToMany(mappedBy = "mezzo")
-    private List<Tratta>            tratte;
-    @OneToMany(mappedBy = "mezzo")
+    @ManyToOne
+    @JoinColumn(name = "tratta_fk")
+    private Tratta                  tratta;
+    @ManyToMany(mappedBy = "mezzo")
     @Column(name = "tratte_effettuate")
     private List<TratteEffettuate>  tratteEffettuate;
 
     public Mezzo() {
     }
 
-    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo, List<Tratta> tratte, List<TratteEffettuate> tratteEffettuate) {
+    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo, Tratta tratta) {
         this.capienza = capienza;
         this.statoServizio = statoServizio;
-        this.manutenzioni = new ArrayList<>();
         this.tipoMezzo = tipoMezzo;
-        this.tratte = tratte;
-        this.tratteEffettuate = tratteEffettuate;
+        this.tratta = tratta;
     }
 
     public int getCodiceVeicolo() {
@@ -78,12 +77,12 @@ public class Mezzo {
         this.tipoMezzo = tipoMezzo;
     }
 
-    public List<Tratta> getTratte() {
-        return tratte;
+    public Tratta getTratta() {
+        return tratta;
     }
 
-    public void setTratte(List<Tratta> tratte) {
-        this.tratte = tratte;
+    public void setTratta(Tratta tratta) {
+        this.tratta = tratta;
     }
 
     public List<TratteEffettuate> getTratteEffettuate() {

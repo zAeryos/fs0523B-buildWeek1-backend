@@ -38,7 +38,7 @@ public abstract class TitoloEmesso {
         this.puntoDiEmissione = puntoDiEmissione;
     }
 
-    public LocalDate getDataEmissionessdsdds() {
+    public LocalDate getDataEmissione() {
         return dataEmissione;
     }
 
