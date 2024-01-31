@@ -103,9 +103,7 @@ public class Mezzo {
                 "codiceVeicolo=" + codiceVeicolo +
                 ", capienza=" + capienza +
                 ", statoServizio=" + statoServizio +
-                ", manutenzioni=" + manutenzioni +
                 ", tipoMezzo=" + tipoMezzo +
-                ", tratta=" + tratta +
                 ", tratteEffettuate=" + tratteEffettuate +
                 '}';
     }
