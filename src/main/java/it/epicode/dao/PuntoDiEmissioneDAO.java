@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+/* WORKS */
 public class PuntoDiEmissioneDAO {
     private EntityManagerFactory    emf;
     private EntityManager           em;
@@ -36,4 +37,6 @@ public class PuntoDiEmissioneDAO {
         et.commit();
 
     }
+
+    //TODO update per cambiare lo stato di servizio
 }

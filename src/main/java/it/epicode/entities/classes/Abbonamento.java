@@ -12,15 +12,17 @@ import java.time.LocalDate;
 public class Abbonamento extends TitoloEmesso {
     @Enumerated(EnumType.STRING)
     private Periodicita periodicita;
-    @OneToOne(mappedBy = "abbonamento")     // TODO.
+    @OneToOne
+    @JoinColumn(name = "tessera_fk")
     private Tessera     tessera;
     private LocalDate   scadenza;
 
-    public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDate dataEmissione, Periodicita periodicita) {
+    public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDate dataEmissione, Periodicita periodicita, Tessera tessera) {
         super(puntoDiEmissione, dataEmissione);
         this.periodicita = periodicita;
         this.scadenza = LocalDate.now();
         this.scadenza = calcolaScadenza();
+        this.tessera = tessera;
     }
 
     public Abbonamento() {

@@ -4,6 +4,7 @@ import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,22 +24,21 @@ public class Mezzo {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_mezzo")
     private TipoMezzo               tipoMezzo;
-    @OneToMany(mappedBy = "mezzo")
-    private List<Tratta>            tratte;
-    @OneToMany(mappedBy = "mezzo")
+    @ManyToOne
+    @JoinColumn(name = "tratta_fk")
+    private Tratta                  tratta;
+    @ManyToMany(mappedBy = "mezzo")
     @Column(name = "tratte_effettuate")
     private List<TratteEffettuate>  tratteEffettuate;
 
     public Mezzo() {
     }
 
-    public Mezzo(int capienza, StatoServizio statoServizio, List<Manutenzione> manutenzioni, TipoMezzo tipoMezzo, List<Tratta> tratte, List<TratteEffettuate> tratteEffettuate) {
+    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo, Tratta tratta) {
         this.capienza = capienza;
         this.statoServizio = statoServizio;
-        this.manutenzioni = manutenzioni;
         this.tipoMezzo = tipoMezzo;
-        this.tratte = tratte;
-        this.tratteEffettuate = tratteEffettuate;
+        this.tratta = tratta;
     }
 
     public int getCodiceVeicolo() {
@@ -77,12 +77,12 @@ public class Mezzo {
         this.tipoMezzo = tipoMezzo;
     }
 
-    public List<Tratta> getTratte() {
-        return tratte;
+    public Tratta getTratta() {
+        return tratta;
     }
 
-    public void setTratte(List<Tratta> tratte) {
-        this.tratte = tratte;
+    public void setTratta(Tratta tratta) {
+        this.tratta = tratta;
     }
 
     public List<TratteEffettuate> getTratteEffettuate() {
@@ -91,5 +91,22 @@ public class Mezzo {
 
     public void setTratteEffettuate(List<TratteEffettuate> tratteEffettuate) {
         this.tratteEffettuate = tratteEffettuate;
+    }
+
+    //TODO metodo per eseguire una tratta + controllo stato stato servizio
+    //TODO metodo per vidimare il biglietto
+
+
+    @Override
+    public String toString() {
+        return "Mezzo{" +
+                "codiceVeicolo=" + codiceVeicolo +
+                ", capienza=" + capienza +
+                ", statoServizio=" + statoServizio +
+                ", manutenzioni=" + manutenzioni +
+                ", tipoMezzo=" + tipoMezzo +
+                ", tratta=" + tratta +
+                ", tratteEffettuate=" + tratteEffettuate +
+                '}';
     }
 }

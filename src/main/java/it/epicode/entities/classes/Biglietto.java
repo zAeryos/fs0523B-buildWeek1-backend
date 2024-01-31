@@ -28,4 +28,6 @@ public class Biglietto extends TitoloEmesso {
     public void setValido(boolean valido) {
         this.valido = valido;
     }
+
+    //TODO metodo per cambiare la validita del biglietto
 }

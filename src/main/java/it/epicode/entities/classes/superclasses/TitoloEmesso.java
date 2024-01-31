@@ -34,7 +34,7 @@ public abstract class TitoloEmesso {
         return puntoDiEmissione;
     }
 
-    public void setPuntoDiEmissione(PuntoDiEmissione puntoDiEmissione) {
+    public void setPuntoEmissione(PuntoDiEmissione puntoDiEmissione) {
         this.puntoDiEmissione = puntoDiEmissione;
     }
 
