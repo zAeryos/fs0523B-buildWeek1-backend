@@ -33,4 +33,7 @@ public abstract class PuntoDiEmissione {
     public void setTitoliEmessi(TitoloEmesso titoloEmesso) {
         this.titoliEmessi.add(titoloEmesso);
     }
+
+    //TODO metodi per emettere biglietti / abbonamenti | ?Tessera
+    //TODO aggiungere ai metodi un controllo dello stato di servizio
 }

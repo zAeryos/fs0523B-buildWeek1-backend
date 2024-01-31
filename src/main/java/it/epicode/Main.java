@@ -54,6 +54,11 @@ public class Main {
 
 //        trattaDAO.create(tratta);
 //        mezzoDAO.create(mezzo);
+//
+//        mezzo.setCapienza(64);
+//        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
+//
+//        mezzoDAO.update(mezzo.getCodiceVeicolo());
 //        manutenzioneDAO.create(manutenzione);
 
 //        tratteEffettuateDAO.create(tratteEffettuate);

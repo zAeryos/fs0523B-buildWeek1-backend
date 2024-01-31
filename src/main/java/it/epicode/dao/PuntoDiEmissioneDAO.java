@@ -37,4 +37,6 @@ public class PuntoDiEmissioneDAO {
         et.commit();
 
     }
+
+    //TODO update per cambiare lo stato di servizio
 }
