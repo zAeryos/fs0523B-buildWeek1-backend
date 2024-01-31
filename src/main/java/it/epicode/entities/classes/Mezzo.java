@@ -4,6 +4,8 @@ import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class Mezzo {
     @ManyToOne
     @JoinColumn(name = "tratta_fk")
     private Tratta                  tratta;
-    @ManyToMany(mappedBy = "mezzo")
+    @OneToMany(mappedBy = "mezzo")
     @Column(name = "tratte_effettuate")
     private List<TratteEffettuate>  tratteEffettuate;
 
@@ -93,7 +95,17 @@ public class Mezzo {
         this.tratteEffettuate = tratteEffettuate;
     }
 
-    //TODO metodo per eseguire una tratta + controllo stato stato servizio
+    public TratteEffettuate effettuaTratta(Tratta tratta, int tempoEffettivoTratta){
+        if (this.statoServizio == StatoServizio.IN_SERVIZIO) {
+            TratteEffettuate trattaEffettuata = new TratteEffettuate(this, tratta, LocalDateTime.now(), tempoEffettivoTratta);
+            System.out.println(trattaEffettuata);
+            return  trattaEffettuata;
+        } else {
+            System.out.println("Il Mezzo non può effettuare la tratta perchè è in manutenzione");
+            return null;
+        }
+    }
+
     //TODO metodo per vidimare il biglietto
 
 
