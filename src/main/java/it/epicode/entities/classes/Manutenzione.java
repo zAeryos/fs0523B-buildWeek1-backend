@@ -18,12 +18,12 @@ public class Manutenzione {
     @JoinColumn(name = "mezzo_fk")
     private Mezzo       mezzo;
 
-    public Manutenzione(LocalDate dataInizio, Mezzo mezzo) {
-        this.dataInizio = dataInizio;
-        this.mezzo      = mezzo;
+    public Manutenzione() {
     }
 
-    public Manutenzione() {
+    public Manutenzione(LocalDate dataInizio, Mezzo mezzo) {
+        this.dataInizio = dataInizio;
+        this.mezzo = mezzo;
     }
 
     public int getId() {

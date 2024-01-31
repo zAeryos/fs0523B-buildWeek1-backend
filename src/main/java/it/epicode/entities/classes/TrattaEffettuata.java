@@ -1,35 +1,34 @@
 package it.epicode.entities.classes;
 
-import it.epicode.dao.TrattaDAO;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tratte_effettuate")
-public class TrattaEffettuata{
+public class TratteEffettuate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int         id;
-
     @ManyToOne()
     @JoinColumn(name = "mezzo_fk", nullable = false)
     private Mezzo       mezzo;
+    @ManyToOne()
+    @JoinColumn(name = "tratta_fk")
+    private Tratta tratta;
     @Column(name = "data_tratta", nullable = false)
-    private LocalDate   dataTratta;
+    private LocalDateTime dataTratta;
     @Column(name = "tempo_effettivo_tratta", nullable = false)
     private int         tempoEffettivoTratta;
-//    @ManyToOne
-//    @JoinColumn(name = "tratta_fk")
-//    private  Tratta tratta;
 
-    public TrattaEffettuata() {
+    public TratteEffettuate() {
     }
 
-    public TrattaEffettuata(Mezzo mezzo, LocalDate dataTratta, int tempoEffettivoTratta) {
-//        this.tratta = tratta;
+    public TratteEffettuate(Mezzo mezzo, Tratta tratta, LocalDateTime dataTratta, int tempoEffettivoTratta) {
         this.mezzo = mezzo;
+        this.tratta = tratta;
         this.dataTratta = dataTratta;
         this.tempoEffettivoTratta = tempoEffettivoTratta;
     }
@@ -46,11 +45,11 @@ public class TrattaEffettuata{
         this.mezzo = mezzo;
     }
 
-    public LocalDate getDataTratta() {
+    public LocalDateTime getDataTratta() {
         return dataTratta;
     }
 
-    public void setDataTratta(LocalDate dataTratta) {
+    public void setDataTratta(LocalDateTime dataTratta) {
         this.dataTratta = dataTratta;
     }
 
@@ -61,10 +60,4 @@ public class TrattaEffettuata{
     public void setTempoEffettivoTratta(int tempoEffettivoTratta) {
         this.tempoEffettivoTratta = tempoEffettivoTratta;
     }
-
-//    public int randomTempoEffettivo (){
-//        int tempoMedio = ;
-//        int tempoEffettivo = (int)Math.floor(Math.random()*(tempoMedio + 10)+(tempoMedio - 10));
-//        return tempoEffettivo;
-    }
-
+}

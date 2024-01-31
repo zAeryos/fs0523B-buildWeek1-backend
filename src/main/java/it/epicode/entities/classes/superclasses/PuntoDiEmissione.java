@@ -14,12 +14,9 @@ public abstract class PuntoDiEmissione {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int         id;
 
-//    @Column(name = "data_emissione")
-//    private List<LocalDate>   dataEmissione;
-
     @OneToMany(mappedBy = "puntoDiEmissione")
     @Column(name = "titoli_emessi")
-    private List<TitoloEmesso> titoliEmessi;  //TODO
+    private List<TitoloEmesso> titoliEmessi;
 
     public PuntoDiEmissione() {
         this.titoliEmessi = new ArrayList<>();

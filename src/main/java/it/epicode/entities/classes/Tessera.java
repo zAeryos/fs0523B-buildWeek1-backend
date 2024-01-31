@@ -9,14 +9,14 @@ public class Tessera {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int             id;
-    @OneToOne(mappedBy = "tessera")
+    @OneToOne
+    @JoinColumn(name = "utente_fk")
     private Utente          utente;
     @Column(name = "data_emissione", nullable = false)
     private LocalDate       dataEmissione;
     @Column(nullable = false)
     private LocalDate       scadenza;
-    @OneToOne
-    @JoinColumn(name = "abbonamento_fk")
+    @OneToOne(mappedBy = "tessera")
     private Abbonamento     abbonamento;
 
     public Tessera() {

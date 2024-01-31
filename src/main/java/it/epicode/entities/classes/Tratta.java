@@ -16,11 +16,10 @@ public class Tratta {
     private String  capolinea;
     @Column(name = "tempo_medio_percorrenza")
     private int     tempoMedioPercorrenza;
-    @ManyToOne
-    @JoinColumn(name = "mezzo_fk")
-    private Mezzo mezzo;
-//    @OneToMany
-//    private List<Tratta> tratte;
+    @OneToMany(mappedBy = "tratta")
+    private List<Mezzo> mezzi;
+    @OneToMany(mappedBy = "tratta")
+    private List<TratteEffettuate> tratteEffettuate;
 
     public Tratta() {
     }

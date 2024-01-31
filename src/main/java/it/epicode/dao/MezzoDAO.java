@@ -6,6 +6,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 
+/* WORKS */
 public class MezzoDAO {
     private EntityManagerFactory    emf;
     private EntityManager           em;
