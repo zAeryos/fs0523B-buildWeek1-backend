@@ -92,4 +92,7 @@ public class Mezzo {
     public void setTratteEffettuate(List<TratteEffettuate> tratteEffettuate) {
         this.tratteEffettuate = tratteEffettuate;
     }
+
+    //TODO metodo per eseguire una tratta + controllo stato stato servizio
+    //TODO metodo per vidimare il biglietto
 }

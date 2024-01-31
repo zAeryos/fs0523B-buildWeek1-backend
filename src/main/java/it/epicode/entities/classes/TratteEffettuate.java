@@ -60,4 +60,6 @@ public class TratteEffettuate {
     public void setTempoEffettivoTratta(int tempoEffettivoTratta) {
         this.tempoEffettivoTratta = tempoEffettivoTratta;
     }
+
+    //TODO metodo randomTempoEffettivo
 }

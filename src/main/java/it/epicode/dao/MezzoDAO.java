@@ -1,6 +1,7 @@
 package it.epicode.dao;
 
 import it.epicode.entities.classes.Mezzo;
+import it.epicode.entities.classes.Tessera;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -37,4 +38,19 @@ public class MezzoDAO {
         et.commit();
 
     }
+
+    public void update(int id) {
+        EntityTransaction   et       = em.getTransaction();
+        Mezzo mezzo  = getById(id);
+                                        //TODO Bisogna controllare se funziona
+        et.begin();
+        em.refresh(mezzo);
+        et.commit();
+    }
+
+    //TODO metodo per stampare il periodo delle manutenzioni ed il periodo di attività
+    //TODO metodo per controllare i biglietti vidimati in quel mezzo
+    //TODO metodo per controllare i biglietti vidimati in un periodo di tempo
+    //TODO metodo per tenere traccia di numero di volte che un mezzo percorre una tratta effettuata
+
 }
