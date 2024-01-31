@@ -62,4 +62,16 @@ public class Tratta {
     public void setTempoMedioPercorrenza(int tempoMedioPercorrenza) {
         this.tempoMedioPercorrenza = tempoMedioPercorrenza;
     }
+
+    @Override
+    public String toString() {
+        return "Tratta{" +
+                "id=" + id +
+                ", zonaDiPartenza='" + zonaDiPartenza + '\'' +
+                ", capolinea='" + capolinea + '\'' +
+                ", tempoMedioPercorrenza=" + tempoMedioPercorrenza +
+                ", mezzi=" + mezzi +
+                ", tratteEffettuate=" + tratteEffettuate +
+                '}';
+    }
 }

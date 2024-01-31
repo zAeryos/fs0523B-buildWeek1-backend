@@ -50,18 +50,36 @@ public class Main {
         Tratta tratta = new Tratta("Roma", "Milano", 220);
         Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta);
         TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
-        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo);
 
-//        trattaDAO.create(tratta);
-//        mezzoDAO.create(mezzo);
-//
+
+        trattaDAO.create(tratta);
+        Mezzo mezzoCreato = mezzoDAO.create(mezzo);
+
+//        System.out.println(mezzoCreato);
+
 //        mezzo.setCapienza(64);
 //        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
-//
-//        mezzoDAO.update(mezzo.getCodiceVeicolo());
-//        manutenzioneDAO.create(manutenzione);
+
+        System.out.println(mezzo);
+        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo);
+        mezzoDAO.update(mezzo);
+
+        manutenzioneDAO.create(manutenzione);
+        System.out.println(mezzo);
+        System.out.println(manutenzione);
+        manutenzione.setDataFine(LocalDate.of(2024,02,01));
+        System.out.println(manutenzione);
+        manutenzioneDAO.update(manutenzione);
+        System.out.println(mezzo);
+        System.out.println(manutenzione);
 
 //        tratteEffettuateDAO.create(tratteEffettuate);
+
+//        System.out.println(mezzo);
+//        System.out.println(manutenzioneDAO.periodoManutenzioni(mezzo));
+
+
+
 
     }
 }
