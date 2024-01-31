@@ -16,13 +16,14 @@ public class MezzoDAO {
         emf = Persistence.createEntityManagerFactory("dbtrasportopubblico");
         em  = emf.createEntityManager();
     }
-    public void create(Mezzo mezzo) {
+    public Mezzo create(Mezzo mezzo) {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
         em.persist(mezzo);
         et.commit();
 
+        return mezzo;
     }
 
     public Mezzo getById(int id) {
@@ -39,12 +40,10 @@ public class MezzoDAO {
 
     }
 
-    public void update(int id) {
+    public void update(Mezzo mezzo) {
         EntityTransaction   et       = em.getTransaction();
-        Mezzo mezzo  = getById(id);
-                                        //TODO Bisogna controllare se funziona
+
         et.begin();
-        em.refresh(mezzo);
         et.commit();
     }
 

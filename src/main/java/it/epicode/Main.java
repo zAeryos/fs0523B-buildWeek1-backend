@@ -52,13 +52,18 @@ public class Main {
         TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
         Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo);
 
-//        trattaDAO.create(tratta);
-//        mezzoDAO.create(mezzo);
-//
-//        mezzo.setCapienza(64);
-//        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
-//
-//        mezzoDAO.update(mezzo.getCodiceVeicolo());
+        trattaDAO.create(tratta);
+        Mezzo mezzoCreato = mezzoDAO.create(mezzo);
+
+        System.out.println(mezzoCreato);
+
+        mezzo.setCapienza(64);
+        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
+
+        System.out.println(mezzoCreato);
+
+        mezzoDAO.update(mezzoCreato);
+
 //        manutenzioneDAO.create(manutenzione);
 
 //        tratteEffettuateDAO.create(tratteEffettuate);

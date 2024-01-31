@@ -39,11 +39,11 @@ public class TesseraDAO {
     public void update(int id) {
         EntityTransaction   et       = em.getTransaction();
         Tessera             tessera  = getById(id);
-                                                                //TODO Bisogna controllare se funziona
+
         et.begin();
-        em.refresh(tessera);
         et.commit();
     }
 
+    //TODO Modificare create e update
     //TODO Bisogna controllare se l'abbonamento collegato a questa tessera è valido
 }

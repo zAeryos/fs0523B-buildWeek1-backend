@@ -95,4 +95,18 @@ public class Mezzo {
 
     //TODO metodo per eseguire una tratta + controllo stato stato servizio
     //TODO metodo per vidimare il biglietto
+
+
+    @Override
+    public String toString() {
+        return "Mezzo{" +
+                "codiceVeicolo=" + codiceVeicolo +
+                ", capienza=" + capienza +
+                ", statoServizio=" + statoServizio +
+                ", manutenzioni=" + manutenzioni +
+                ", tipoMezzo=" + tipoMezzo +
+                ", tratta=" + tratta +
+                ", tratteEffettuate=" + tratteEffettuate +
+                '}';
+    }
 }
