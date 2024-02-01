@@ -14,12 +14,13 @@ public class TesseraDAO {
         emf = Persistence.createEntityManagerFactory("dbtrasportopubblico");
         em  = emf.createEntityManager();
     }
-    public void create(Tessera tessera) {
+    public Tessera create(Tessera tessera) {
         EntityTransaction et = em.getTransaction();
 
         et.begin();
         em.persist(tessera);
         et.commit();
+        return tessera;
 
     }
 
@@ -36,14 +37,13 @@ public class TesseraDAO {
         et.commit();
     }
 
-    public void update(int id) {
+    public void update(Tessera tessera) {
         EntityTransaction   et       = em.getTransaction();
-        Tessera             tessera  = getById(id);
 
         et.begin();
+        em.persist(tessera);
         et.commit();
     }
 
-    //TODO Modificare create e update
     //TODO Bisogna controllare se l'abbonamento collegato a questa tessera è valido
 }

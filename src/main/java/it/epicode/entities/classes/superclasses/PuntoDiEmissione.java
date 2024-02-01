@@ -42,7 +42,7 @@ public abstract class PuntoDiEmissione {
     }
 
     public Biglietto emettiBiglietto() {
-        return new Biglietto(this, LocalDateTime.now());
+        return new Biglietto(this, LocalDateTime.now(),new TitoloEmessoDAO());
     }
 
     public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera) {
@@ -55,7 +55,4 @@ public abstract class PuntoDiEmissione {
     }
 
 
-
-    //TODO metodo per emettere ?Tessera
-    //TODO aggiungere ai metodi un controllo dello stato di servizio
 }
