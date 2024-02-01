@@ -22,10 +22,10 @@ public class Abbonamento extends TitoloEmesso {
 
     public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione, Periodicita periodicita, Tessera tessera) {
         super(puntoDiEmissione, dataEmissione);
-        this.periodicita = periodicita;
-        this.scadenza = LocalDateTime.now();
-        this.scadenza = calcolaScadenza();
-        this.tessera = tessera;
+        this.periodicita    = periodicita;
+        this.scadenza       = LocalDateTime.now();
+        this.scadenza       = calcolaScadenza();
+        this.tessera        = tessera;
 
         TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
@@ -72,10 +72,10 @@ public class Abbonamento extends TitoloEmesso {
 
     @Override
     public String toString() {
-        return "Abbonamento{" +
-                "periodicita=" + periodicita +
-                ", tessera=" + tessera +
-                ", scadenza=" + scadenza +
+        return "Abbonamento{"   +
+                "periodicita="  + periodicita   +
+                ", tessera="    + tessera       +
+                ", scadenza="   + scadenza      +
                 '}';
     }
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public abstract class PuntoDiEmissione {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int         id;
+    private int                 id;
 
     @OneToMany(mappedBy = "puntoDiEmissione")
     @Column(name = "titoli_emessi")
@@ -25,15 +25,15 @@ public abstract class PuntoDiEmissione {
 
     @Column(name = "stato_attivita", nullable = false)
     @Enumerated(EnumType.STRING)
-    private StatoAttivita statoAttivita;
+    private StatoAttivita       statoAttivita;
 
     public PuntoDiEmissione() {
         this.titoliEmessi = new ArrayList<>();
     }
 
     public PuntoDiEmissione(StatoAttivita statoAttivita) {
-        this.statoAttivita = statoAttivita;
-        this.titoliEmessi = new ArrayList<>();
+        this.statoAttivita  = statoAttivita;
+        this.titoliEmessi   = new ArrayList<>();
     }
 
     public int getId() {

@@ -110,12 +110,12 @@ public class Mezzo {
     }
     @Override
     public String toString() {
-        return "Mezzo{" +
-                "codiceVeicolo=" + codiceVeicolo +
-                ", capienza=" + capienza +
-                ", statoServizio=" + statoServizio +
-                ", tipoMezzo=" + tipoMezzo +
-                ", tratteEffettuate=" + tratteEffettuate +
+        return "Mezzo{"                 +
+                "codiceVeicolo="        + codiceVeicolo     +
+                ", capienza="           + capienza          +
+                ", statoServizio="      + statoServizio     +
+                ", tipoMezzo="          + tipoMezzo         +
+                ", tratteEffettuate="   + tratteEffettuate  +
                 '}';
     }
 }
