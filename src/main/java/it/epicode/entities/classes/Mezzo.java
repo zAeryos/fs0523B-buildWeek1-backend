@@ -108,10 +108,6 @@ public class Mezzo {
             return null;
         }
     }
-
-    //TODO metodo per vidimare il biglietto
-
-
     @Override
     public String toString() {
         return "Mezzo{" +

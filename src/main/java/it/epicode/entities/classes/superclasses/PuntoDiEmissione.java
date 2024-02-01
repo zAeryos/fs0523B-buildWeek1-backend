@@ -2,11 +2,9 @@ package it.epicode.entities.classes.superclasses;
 
 import it.epicode.dao.PuntoDiEmissioneDAO;
 import it.epicode.dao.TitoloEmessoDAO;
-import it.epicode.entities.classes.Abbonamento;
-import it.epicode.entities.classes.Biglietto;
-import it.epicode.entities.classes.Tessera;
-import it.epicode.entities.classes.Utente;
+import it.epicode.entities.classes.*;
 import it.epicode.entities.enums.Periodicita;
+import it.epicode.entities.enums.StatoAttivita;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -25,7 +23,16 @@ public abstract class PuntoDiEmissione {
     @Column(name = "titoli_emessi")
     private List<TitoloEmesso> titoliEmessi;
 
+    @Column(name = "stato_attivita", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private StatoAttivita statoAttivita;
+
     public PuntoDiEmissione() {
+        this.titoliEmessi = new ArrayList<>();
+    }
+
+    public PuntoDiEmissione(StatoAttivita statoAttivita) {
+        this.statoAttivita = statoAttivita;
         this.titoliEmessi = new ArrayList<>();
     }
 
@@ -42,20 +49,38 @@ public abstract class PuntoDiEmissione {
     }
 
     public Biglietto emettiBiglietto() {
-        return new Biglietto(this, LocalDateTime.now());
+        if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
+            return new Biglietto(this, LocalDateTime.now());
+        } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
+            System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
+            return null;
+        } else {
+            System.out.println("Il distributore è fuori uso.");
+            return null;
+        }
     }
 
     public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera) {
-        return new Abbonamento(this, LocalDateTime.now(), periodicita, tessera);
+        if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
+            return new Abbonamento(this, LocalDateTime.now(), periodicita, tessera);
+        } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
+            System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
+            return null;
+        } else {
+            System.out.println("Il distributore è fuori uso.");
+            return null;
+        }
     }
 
     public Tessera emettiTessera(Utente utente) {
-
-        return new Tessera(utente);
+        if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
+            return new Tessera(utente);
+        } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
+            System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
+            return null;
+        } else {
+            System.out.println("Il distributore è fuori uso.");
+            return null;
+        }
     }
-
-
-
-    //TODO metodo per emettere ?Tessera
-    //TODO aggiungere ai metodi un controllo dello stato di servizio
 }
