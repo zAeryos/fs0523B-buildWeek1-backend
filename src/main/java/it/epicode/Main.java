@@ -2,6 +2,7 @@ package it.epicode;
 
 import it.epicode.dao.*;
 import it.epicode.entities.classes.*;
+import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import it.epicode.entities.enums.Periodicita;
 import it.epicode.entities.enums.StatoAttivita;
 import it.epicode.entities.enums.StatoServizio;
@@ -22,17 +23,24 @@ public class Main {
         RivenditoreAutorizzato rivenditoreAutorizzato = new RivenditoreAutorizzato("Rivenditore2000", "Napoli");
 
         Utente          utente1         = new Utente("Giorgio", "Topa", LocalDate.of(1992,8,7), "giorgiotopa7@gmail.com");
-        Utente          utente2         = new Utente("Davide", "Jackowski", LocalDate.of(1998, 8,13), "davidejackowski@gmail.com");
-        Utente          utente3         = new Utente("Emanuele", "Barone", LocalDate.of(1996, 5, 22), "barone.emanuele8@gmail.com");
-        Biglietto       biglietto1      = new Biglietto(distributoreAutomatico, LocalDate.now());
-        Biglietto       biglietto2      = new Biglietto(rivenditoreAutorizzato, LocalDate.now());
+//        Utente          utente2         = new Utente("Davide", "Jackowski", LocalDate.of(1998, 8,13), "davidejackowski@gmail.com");
+//        Utente          utente3         = new Utente("Emanuele", "Barone", LocalDate.of(1996, 5, 22), "barone.emanuele8@gmail.com");
+//        Biglietto       biglietto1      = new Biglietto(distributoreAutomatico, LocalDateTime.now());
+//        Biglietto       biglietto2      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now());
         Tessera         tessera         = new Tessera(utente1);
-        Abbonamento     abbonamento     = new Abbonamento(distributoreAutomatico, LocalDate.now(), Periodicita.MENSILE, tessera);
-
-
+//        Abbonamento     abbonamento     = new Abbonamento(distributoreAutomatico, LocalDateTime.now(), Periodicita.MENSILE, tessera);
+//
+//        puntoDiEmissioneDAO.create(distributoreAutomatico);
 //        utenteDAO.create(utente1);
 //        tesseraDAO.create(tessera);
 //
+        Biglietto   bigliettoTest   = distributoreAutomatico.emettiBiglietto();
+        System.out.println(bigliettoTest);
+
+        Abbonamento abbonamentoTest = distributoreAutomatico.emettiAbbonamento(Periodicita.MENSILE, tessera);
+        System.out.println(abbonamentoTest);
+
+
 //        puntoDiEmissioneDAO.create(rivenditoreAutorizzato);
 //        titoloEmessoDAO.create(biglietto2);
 //        titoloEmessoDAO.create(abbonamento);
@@ -42,44 +50,31 @@ public class Main {
 
         /* MEZZI - TRATTE */
 
-        MezzoDAO mezzoDAO = new MezzoDAO();
-        TrattaDAO trattaDAO = new TrattaDAO();
-        TratteEffettuateDAO tratteEffettuateDAO = new TratteEffettuateDAO();
-        ManutenzioneDAO manutenzioneDAO = new ManutenzioneDAO();
+//        MezzoDAO mezzoDAO = new MezzoDAO();
+//        TrattaDAO trattaDAO = new TrattaDAO();
+//        TratteEffettuateDAO tratteEffettuateDAO = new TratteEffettuateDAO();
+//        ManutenzioneDAO manutenzioneDAO = new ManutenzioneDAO();
+//
+//        Tratta tratta = new Tratta("Roma", "Milano", 220);
+//        Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta);
+//        TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
 
-        Tratta tratta = new Tratta("Roma", "Milano", 220);
-        Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta);
-        TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
 
-
-        trattaDAO.create(tratta);
-        Mezzo mezzoCreato = mezzoDAO.create(mezzo);
+//        trattaDAO.create(tratta);
+//        Mezzo mezzoCreato = mezzoDAO.create(mezzo);
 
 //        System.out.println(mezzoCreato);
 
 //        mezzo.setCapienza(64);
 //        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
 
-        System.out.println(mezzo);
-        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo);
-        mezzoDAO.update(mezzo);
-
-        manutenzioneDAO.create(manutenzione);
-        System.out.println(mezzo);
-        System.out.println(manutenzione);
-        manutenzione.setDataFine(LocalDate.of(2024,02,01));
-        System.out.println(manutenzione);
-        manutenzioneDAO.update(manutenzione);
-        System.out.println(mezzo);
-        System.out.println(manutenzione);
+//        System.out.println(mezzo);
+//        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo);
+//        mezzoDAO.update(mezzo);
 
 //        tratteEffettuateDAO.create(tratteEffettuate);
 
 //        System.out.println(mezzo);
 //        System.out.println(manutenzioneDAO.periodoManutenzioni(mezzo));
-
-
-
-
     }
 }

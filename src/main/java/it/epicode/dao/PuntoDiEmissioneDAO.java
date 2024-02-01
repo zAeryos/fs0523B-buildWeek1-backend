@@ -1,5 +1,7 @@
 package it.epicode.dao;
 
+import it.epicode.entities.classes.DistributoreAutomatico;
+import it.epicode.entities.classes.RivenditoreAutorizzato;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

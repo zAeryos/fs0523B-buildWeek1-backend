@@ -1,5 +1,6 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.UtenteDAO;
 import it.epicode.entities.enums.Sesso;
 import jakarta.persistence.*;
 
@@ -36,6 +37,9 @@ public class Utente {
         this.cognome = cognome;
         this.dataDiNascita = dataDiNascita;
         this.email = email;
+
+        UtenteDAO dao = new UtenteDAO();
+        dao.create(this);
     }
 
     public int getId() {

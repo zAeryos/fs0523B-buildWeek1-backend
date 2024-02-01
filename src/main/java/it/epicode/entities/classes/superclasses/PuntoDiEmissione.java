@@ -1,8 +1,15 @@
 package it.epicode.entities.classes.superclasses;
 
+import it.epicode.dao.PuntoDiEmissioneDAO;
+import it.epicode.dao.TitoloEmessoDAO;
+import it.epicode.entities.classes.Abbonamento;
+import it.epicode.entities.classes.Biglietto;
+import it.epicode.entities.classes.Tessera;
+import it.epicode.entities.classes.Utente;
+import it.epicode.entities.enums.Periodicita;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +40,21 @@ public abstract class PuntoDiEmissione {
     public void setTitoliEmessi(TitoloEmesso titoloEmesso) {
         this.titoliEmessi.add(titoloEmesso);
     }
+
+    public Biglietto emettiBiglietto() {
+        return new Biglietto(this, LocalDateTime.now());
+    }
+
+    public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera) {
+        return new Abbonamento(this, LocalDateTime.now(), periodicita, tessera);
+    }
+
+    public Tessera emettiTessera(Utente utente) {
+
+        return new Tessera(utente);
+    }
+
+
 
     //TODO metodi per emettere biglietti / abbonamenti | ?Tessera
     //TODO aggiungere ai metodi un controllo dello stato di servizio

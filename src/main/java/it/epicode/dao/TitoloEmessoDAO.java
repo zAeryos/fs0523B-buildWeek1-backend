@@ -20,7 +20,6 @@ public class TitoloEmessoDAO {
         et.begin();
         em.persist(titoloEmesso);
         et.commit();
-
     }
 
     public TitoloEmesso getById(int id) {

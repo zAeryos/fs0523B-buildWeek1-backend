@@ -1,8 +1,10 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.TesseraDAO;
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "tessera")
 public class Tessera {
@@ -13,9 +15,9 @@ public class Tessera {
     @JoinColumn(name = "utente_fk")
     private Utente          utente;
     @Column(name = "data_emissione", nullable = false)
-    private LocalDate       dataEmissione;
+    private LocalDateTime   dataEmissione;
     @Column(nullable = false)
-    private LocalDate       scadenza;
+    private LocalDateTime       scadenza;
     @OneToOne(mappedBy = "tessera")
     private Abbonamento     abbonamento;
 
@@ -24,8 +26,11 @@ public class Tessera {
 
     public Tessera(Utente utente) {
         this.utente = utente;
-        this.dataEmissione = LocalDate.now();
+        this.dataEmissione = LocalDateTime.now();
         this.scadenza = this.dataEmissione.plusDays(365);
+
+        TesseraDAO dao = new TesseraDAO();
+        dao.create(this);
     }
 
     public int getId() {
@@ -39,24 +44,24 @@ public class Tessera {
         this.utente = utente;
     }
 
-    public LocalDate getDataEmissione() {
+    public LocalDateTime getDataEmissione() {
         return dataEmissione;
     }
 
-    public void setDataEmissione(LocalDate dataEmissione) {
+    public void setDataEmissione(LocalDateTime dataEmissione) {
         this.dataEmissione = dataEmissione;
     }
 
-    public LocalDate getScadenza() {
+    public LocalDateTime getScadenza() {
         return scadenza;
     }
 
-    public void setScadenza(LocalDate scadenza) {
+    public void setScadenza(LocalDateTime scadenza) {
         this.scadenza = scadenza;
     }
 
     public void rinnovaTessera() {
-        LocalDate nuovaDataScadenza = LocalDate.now();
+        LocalDateTime nuovaDataScadenza = LocalDateTime.now();
         this.scadenza = this.scadenza.plusDays(365);
     }
 }

@@ -1,11 +1,14 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.PuntoDiEmissioneDAO;
+import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import it.epicode.entities.enums.Periodicita;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "abbonamento")
@@ -14,15 +17,17 @@ public class Abbonamento extends TitoloEmesso {
     private Periodicita periodicita;
     @OneToOne
     @JoinColumn(name = "tessera_fk")
-    private Tessera     tessera;
-    private LocalDate   scadenza;
+    private Tessera         tessera;
+    private LocalDateTime scadenza;
 
-    public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDate dataEmissione, Periodicita periodicita, Tessera tessera) {
+    public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione, Periodicita periodicita, Tessera tessera) {
         super(puntoDiEmissione, dataEmissione);
         this.periodicita = periodicita;
-        this.scadenza = LocalDate.now();
+        this.scadenza = LocalDateTime.now();
         this.scadenza = calcolaScadenza();
         this.tessera = tessera;
+        TitoloEmessoDAO dao = new TitoloEmessoDAO();
+        dao.create(this);
     }
 
     public Abbonamento() {
@@ -37,7 +42,7 @@ public class Abbonamento extends TitoloEmesso {
         calcolaScadenza();
     }
 
-    public LocalDate calcolaScadenza () {
+    public LocalDateTime calcolaScadenza () {
         if (periodicita == Periodicita.SETTIMANALE) {
             return this.scadenza = this.scadenza.plusDays(7);
         } else if (periodicita == Periodicita.MENSILE) {
@@ -56,11 +61,11 @@ public class Abbonamento extends TitoloEmesso {
         this.tessera = tessera;
     }
 
-    public LocalDate getScadenza() {
+    public LocalDateTime getScadenza() {
         return scadenza;
     }
 
-    public void setScadenza(LocalDate scadenza) {
+    public void setScadenza(LocalDateTime scadenza) {
         this.scadenza = scadenza;
     }
 

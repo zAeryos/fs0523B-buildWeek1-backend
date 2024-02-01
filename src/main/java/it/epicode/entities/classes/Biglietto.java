@@ -1,11 +1,12 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "biglietto")
@@ -13,9 +14,11 @@ public class Biglietto extends TitoloEmesso {
 
     private boolean valido;
 
-    public Biglietto(PuntoDiEmissione puntoDiEmissione, LocalDate dataEmissione) {
+    public Biglietto(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione) {
         super(puntoDiEmissione, dataEmissione);
         this.valido = true;
+        TitoloEmessoDAO dao = new TitoloEmessoDAO();
+        dao.create(this);
     }
 
     public Biglietto() {
@@ -29,5 +32,18 @@ public class Biglietto extends TitoloEmesso {
         this.valido = valido;
     }
 
-    //TODO metodo per cambiare la validita del biglietto
+    public void cambiaValidita() {
+        if (valido) {
+            valido = false;
+        } else {
+            System.out.println("Il biglietto è già stato utilizzato.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Biglietto{" +
+                "valido=" + valido +
+                '}';
+    }
 }

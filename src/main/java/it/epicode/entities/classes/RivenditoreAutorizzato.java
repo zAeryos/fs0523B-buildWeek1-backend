@@ -1,5 +1,6 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.PuntoDiEmissioneDAO;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,14 +23,18 @@ public class RivenditoreAutorizzato extends PuntoDiEmissione {
     }
 
     public RivenditoreAutorizzato(String nomeRivenditore, String luogoRivenditore) {
-        this.nomeRivenditore = nomeRivenditore;
-        this.luogoRivenditore = luogoRivenditore;
+        this.nomeRivenditore        = nomeRivenditore;
+        this.luogoRivenditore       = luogoRivenditore;
+        PuntoDiEmissioneDAO dao = new PuntoDiEmissioneDAO();
+        dao.create((PuntoDiEmissione)this);
     }
 
     public RivenditoreAutorizzato(String nomeRivenditore, String luogoRivenditore, String indirizzoRivenditore) {
-        this.nomeRivenditore = nomeRivenditore;
-        this.luogoRivenditore = luogoRivenditore;
-        this.indirizzoRivenditore = indirizzoRivenditore;
+        this.nomeRivenditore        = nomeRivenditore;
+        this.luogoRivenditore       = luogoRivenditore;
+        this.indirizzoRivenditore   = indirizzoRivenditore;
+        PuntoDiEmissioneDAO dao = new PuntoDiEmissioneDAO();
+        dao.create((PuntoDiEmissione)this);
     }
 
     public String getNomeRivenditore() {

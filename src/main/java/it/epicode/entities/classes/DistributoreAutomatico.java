@@ -1,5 +1,6 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.PuntoDiEmissioneDAO;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.enums.StatoAttivita;
 import jakarta.persistence.*;
@@ -16,6 +17,8 @@ public class DistributoreAutomatico extends PuntoDiEmissione {
 
     public DistributoreAutomatico(StatoAttivita statoAttivita) {
         this.statoAttivita = statoAttivita;
+        PuntoDiEmissioneDAO dao = new PuntoDiEmissioneDAO();
+        dao.create((PuntoDiEmissione)this);
     }
 
     public DistributoreAutomatico() {

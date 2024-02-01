@@ -2,7 +2,7 @@ package it.epicode.entities.classes.superclasses;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "titolo_emesso")
@@ -16,12 +16,12 @@ public abstract class TitoloEmesso {
     @JoinColumn(name = "punto_di_emissione_fk")
     private PuntoDiEmissione    puntoDiEmissione;
     @Column(name = "data_emissione")
-    private LocalDate           dataEmissione;
+    private LocalDateTime       dataEmissione;
 
     public TitoloEmesso() {
     }
 
-    public TitoloEmesso(PuntoDiEmissione puntoDiEmissione, LocalDate dataEmissione) {
+    public TitoloEmesso(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione) {
         this.puntoDiEmissione = puntoDiEmissione;
         this.dataEmissione = dataEmissione;
     }
@@ -38,11 +38,11 @@ public abstract class TitoloEmesso {
         this.puntoDiEmissione = puntoDiEmissione;
     }
 
-    public LocalDate getDataEmissione() {
+    public LocalDateTime getDataEmissione() {
         return dataEmissione;
     }
 
-    public void setDataEmissione(LocalDate dataEmissione) {
+    public void setDataEmissione(LocalDateTime dataEmissione) {
         this.dataEmissione = dataEmissione;
     }
 
