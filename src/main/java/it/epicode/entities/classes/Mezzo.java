@@ -4,7 +4,6 @@ import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
