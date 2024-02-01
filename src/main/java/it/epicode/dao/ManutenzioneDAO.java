@@ -36,10 +36,9 @@ public class ManutenzioneDAO {
         EntityTransaction   et       = em.getTransaction();
 
         et.begin();
-        MezzoDAO mezzoDAO = new MezzoDAO();
-        mezzoDAO.update(manutenzione.getMezzo());  //TODO verificare l'update (lo stato di servizio non viene aggiornato)
-
+        em.persist(manutenzione);
         et.commit();
+
     }
 
     public void delete(int id) {

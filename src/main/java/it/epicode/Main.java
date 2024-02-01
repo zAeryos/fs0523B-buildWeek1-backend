@@ -40,14 +40,6 @@ public class Main {
 //        Abbonamento abbonamentoTest = distributoreAutomatico.emettiAbbonamento(Periodicita.MENSILE, tessera);
 //        System.out.println(abbonamentoTest);
 
-
-//        puntoDiEmissioneDAO.create(rivenditoreAutorizzato);
-//        titoloEmessoDAO.create(biglietto2);
-//        titoloEmessoDAO.create(abbonamento);
-
-
-
-
         /* MEZZI - TRATTE */
 
         MezzoDAO mezzoDAO = new MezzoDAO();
@@ -61,23 +53,7 @@ public class Main {
         TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
         Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo, manutenzioneDAO, mezzoDAO);
 
-        System.out.println(mezzo);
+        manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
 
-
-//        trattaDAO.create(tratta);
-//        Mezzo mezzoCreato = mezzoDAO.create(mezzo);
-
-//        System.out.println(mezzoCreato);
-
-//        mezzo.setCapienza(64);
-//        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
-
-//        System.out.println(mezzo);
-//        mezzoDAO.update(mezzo);
-
-//        tratteEffettuateDAO.create(tratteEffettuate);
-
-//        System.out.println(mezzo);
-//        System.out.println(manutenzioneDAO.periodoManutenzioni(mezzo));
     }
 }
