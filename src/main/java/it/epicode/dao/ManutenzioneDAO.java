@@ -25,10 +25,7 @@ public class ManutenzioneDAO {
 
         et.begin();
         em.persist(manutenzione);
-        MezzoDAO mezzoDAO = new MezzoDAO();
-        mezzoDAO.update(manutenzione.getMezzo());
         et.commit();
-
     }
 
     public Manutenzione getById(int id) {

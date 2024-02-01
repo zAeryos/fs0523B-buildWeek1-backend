@@ -17,6 +17,7 @@ public class Biglietto extends TitoloEmesso {
     public Biglietto(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione) {
         super(puntoDiEmissione, dataEmissione);
         this.valido = true;
+
         TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
     }

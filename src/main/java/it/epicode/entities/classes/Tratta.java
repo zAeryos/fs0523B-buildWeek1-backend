@@ -1,5 +1,6 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.TrattaDAO;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -26,13 +27,19 @@ public class Tratta {
 
     public Tratta(String zonaDiPartenza, String capolinea) {
         this.zonaDiPartenza = zonaDiPartenza;
-        this.capolinea = capolinea;
+        this.capolinea      = capolinea;
+
+        TrattaDAO dao = new TrattaDAO();
+        dao.create(this);
     }
 
     public Tratta(String zonaDiPartenza, String capolinea, int tempoMedioPercorrenza) {
         this.zonaDiPartenza = zonaDiPartenza;
         this.capolinea = capolinea;
         this.tempoMedioPercorrenza = tempoMedioPercorrenza;
+
+        TrattaDAO dao = new TrattaDAO();
+        dao.create(this);
     }
 
     public int getId() {

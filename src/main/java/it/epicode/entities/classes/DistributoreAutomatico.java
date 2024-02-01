@@ -17,6 +17,7 @@ public class DistributoreAutomatico extends PuntoDiEmissione {
 
     public DistributoreAutomatico(StatoAttivita statoAttivita) {
         this.statoAttivita = statoAttivita;
+
         PuntoDiEmissioneDAO dao = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }

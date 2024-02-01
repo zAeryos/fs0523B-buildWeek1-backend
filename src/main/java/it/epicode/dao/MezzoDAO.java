@@ -47,6 +47,7 @@ public class MezzoDAO {
         EntityTransaction   et       = em.getTransaction();
 
         et.begin();
+        em.persist(mezzo);
         et.commit();
     }
 

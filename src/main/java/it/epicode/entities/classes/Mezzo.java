@@ -1,5 +1,6 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.MezzoDAO;
 import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
@@ -36,11 +37,13 @@ public class Mezzo {
     public Mezzo() {
     }
 
-    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo, Tratta tratta) {
-        this.capienza = capienza;
-        this.statoServizio = statoServizio;
-        this.tipoMezzo = tipoMezzo;
-        this.tratta = tratta;
+    public Mezzo(int capienza, StatoServizio statoServizio, TipoMezzo tipoMezzo, Tratta tratta, MezzoDAO dao) {
+        this.capienza       = capienza;
+        this.statoServizio  = statoServizio;
+        this.tipoMezzo      = tipoMezzo;
+        this.tratta         = tratta;
+
+        dao.create(this);
     }
 
     public int getCodiceVeicolo() {

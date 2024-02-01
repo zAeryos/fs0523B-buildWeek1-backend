@@ -56,6 +56,6 @@ public abstract class PuntoDiEmissione {
 
 
 
-    //TODO metodi per emettere biglietti / abbonamenti | ?Tessera
+    //TODO metodo per emettere ?Tessera
     //TODO aggiungere ai metodi un controllo dello stato di servizio
 }

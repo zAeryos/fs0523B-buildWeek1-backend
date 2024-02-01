@@ -14,11 +14,11 @@ import java.time.LocalDateTime;
 @Table(name = "abbonamento")
 public class Abbonamento extends TitoloEmesso {
     @Enumerated(EnumType.STRING)
-    private Periodicita periodicita;
+    private Periodicita     periodicita;
     @OneToOne
     @JoinColumn(name = "tessera_fk")
     private Tessera         tessera;
-    private LocalDateTime scadenza;
+    private LocalDateTime   scadenza;
 
     public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione, Periodicita periodicita, Tessera tessera) {
         super(puntoDiEmissione, dataEmissione);
@@ -26,6 +26,7 @@ public class Abbonamento extends TitoloEmesso {
         this.scadenza = LocalDateTime.now();
         this.scadenza = calcolaScadenza();
         this.tessera = tessera;
+
         TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
     }

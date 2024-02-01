@@ -1,5 +1,6 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.TratteEffettuateDAO;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -31,6 +32,9 @@ public class TratteEffettuate {
         this.tratta = tratta;
         this.dataTratta = dataTratta;
         this.tempoEffettivoTratta = tempoEffettivoTratta;
+
+        TratteEffettuateDAO dao = new TratteEffettuateDAO();
+        dao.create(this);
     }
 
     public int getId() {

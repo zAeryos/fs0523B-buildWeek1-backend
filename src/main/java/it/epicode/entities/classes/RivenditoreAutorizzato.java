@@ -25,6 +25,7 @@ public class RivenditoreAutorizzato extends PuntoDiEmissione {
     public RivenditoreAutorizzato(String nomeRivenditore, String luogoRivenditore) {
         this.nomeRivenditore        = nomeRivenditore;
         this.luogoRivenditore       = luogoRivenditore;
+
         PuntoDiEmissioneDAO dao = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }

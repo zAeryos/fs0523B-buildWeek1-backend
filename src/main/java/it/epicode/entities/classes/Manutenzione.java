@@ -1,5 +1,7 @@
 package it.epicode.entities.classes;
 
+import it.epicode.dao.ManutenzioneDAO;
+import it.epicode.dao.MezzoDAO;
 import it.epicode.entities.enums.StatoServizio;
 import jakarta.persistence.*;
 
@@ -22,10 +24,21 @@ public class Manutenzione {
     public Manutenzione() {
     }
 
+    public Manutenzione(LocalDate dataInizio, Mezzo mezzo, ManutenzioneDAO manutenzioneDAO, MezzoDAO mezzoDAO) {
+        this.dataInizio = dataInizio;
+        this.mezzo      = mezzo;
+
+        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
+
+        mezzoDAO.update(mezzo);
+        manutenzioneDAO.create(this);
+    }
+
     public Manutenzione(LocalDate dataInizio, Mezzo mezzo) {
         this.dataInizio = dataInizio;
-        this.mezzo = mezzo;
-        this.mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
+        this.mezzo      = mezzo;
+
+        mezzo.setStatoServizio(StatoServizio.IN_MANUTENZIONE);
     }
 
     public Mezzo getMezzo() {
