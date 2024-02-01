@@ -65,9 +65,11 @@ public class Manutenzione {
         return dataFine;
     }
 
-    public void setDataFine(LocalDate dataFine) {
-        this.dataFine = dataFine;
+    public void setDataFine(ManutenzioneDAO manutenzioneDAO,MezzoDAO mezzoDAO) {
+        this.dataFine = LocalDate.now();
         this.mezzo.setStatoServizio(StatoServizio.IN_SERVIZIO);
+        mezzoDAO.update(this.mezzo);
+        manutenzioneDAO.update(this);
     }
 
     @Override
