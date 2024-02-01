@@ -23,7 +23,7 @@ public abstract class PuntoDiEmissione {
     @Column(name = "titoli_emessi")
     private List<TitoloEmesso> titoliEmessi;
 
-    @Column(name = "stato_attivita", nullable = false)
+    @Column(name = "stato_attivita")
     @Enumerated(EnumType.STRING)
     private StatoAttivita statoAttivita;
 
@@ -50,7 +50,7 @@ public abstract class PuntoDiEmissione {
 
     public Biglietto emettiBiglietto() {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Biglietto(this, LocalDateTime.now());
+            return new Biglietto(this, LocalDateTime.now(), new TitoloEmessoDAO()); //TODO aggiungere il titolo emesso alla lista di titoli emessi
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;

@@ -20,7 +20,7 @@ public class Main {
         TesseraDAO           tesseraDAO             = new TesseraDAO();
 
         DistributoreAutomatico distributoreAutomatico = new DistributoreAutomatico(StatoAttivita.ATTIVO);
-        RivenditoreAutorizzato rivenditoreAutorizzato = new RivenditoreAutorizzato("Rivenditore2000", "Napoli");
+        RivenditoreAutorizzato rivenditoreAutorizzato = new RivenditoreAutorizzato(StatoAttivita.APERTO,"Rivenditore2000", "Napoli","Via Mazzini");
 
         Utente          utente1         = new Utente("Giorgio", "Topa", LocalDate.of(1992,8,7), "giorgiotopa7@gmail.com");
 //        Utente          utente2         = new Utente("Davide", "Jackowski", LocalDate.of(1998, 8,13), "davidejackowski@gmail.com");
@@ -42,23 +42,30 @@ public class Main {
 
         /* MEZZI - TRATTE */
 
-        MezzoDAO mezzoDAO = new MezzoDAO();
-        TrattaDAO trattaDAO = new TrattaDAO();
-        TratteEffettuateDAO tratteEffettuateDAO = new TratteEffettuateDAO();
-        ManutenzioneDAO manutenzioneDAO = new ManutenzioneDAO();
+//        MezzoDAO mezzoDAO = new MezzoDAO();
+//        TrattaDAO trattaDAO = new TrattaDAO();
+//        TratteEffettuateDAO tratteEffettuateDAO = new TratteEffettuateDAO();
+//        ManutenzioneDAO manutenzioneDAO = new ManutenzioneDAO();
+//
+//        Tratta tratta = new Tratta("Roma", "Milano", 220);
+//        Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta, mezzoDAO);
+//        TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
+//        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo, manutenzioneDAO, mezzoDAO);
+//
+//        manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
+//
+//
+//        Biglietto       biglietto3      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now(),titoloEmessoDAO);
+//        System.out.println("Il biglietto è: " + biglietto3 );
+//        mezzo.vidimaBiglietto(biglietto3,titoloEmessoDAO);
+//        System.out.println("biglietto vidimato: " + biglietto3);
 
-        Tratta tratta = new Tratta("Roma", "Milano", 220);
-        Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta, mezzoDAO);
-        TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
-        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo, manutenzioneDAO, mezzoDAO);
 
-        manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
+        //Test emetti Biglietti
 
-
-        Biglietto       biglietto3      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now(),titoloEmessoDAO);
-        System.out.println("Il biglietto è: " + biglietto3 );
-        mezzo.vidimaBiglietto(biglietto3,titoloEmessoDAO);
-        System.out.println("biglietto vidimato: " + biglietto3);
-
+//        rivenditoreAutorizzato.emettiBiglietto();
+//        rivenditoreAutorizzato.emettiAbbonamento(Periodicita.SETTIMANALE,tessera);
+            rivenditoreAutorizzato.emettiTessera(utente1);
+//         distributoreAutomatico.emettiBiglietto();
     }
 }
