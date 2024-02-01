@@ -65,6 +65,8 @@ public class TratteEffettuate {
         this.tempoEffettivoTratta = tempoEffettivoTratta;
     }
 
+
+
     @Override
     public String toString() {
         return "TratteEffettuate{" +
