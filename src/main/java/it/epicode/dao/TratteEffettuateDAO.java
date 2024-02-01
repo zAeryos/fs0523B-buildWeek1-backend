@@ -29,7 +29,7 @@ public class TratteEffettuateDAO {
 
     public void delete(int id) {
         EntityTransaction   et                = em.getTransaction();
-        TratteEffettuate    tratteEffettuate  = getById(id);
+        TratteEffettuate tratteEffettuate = getById(id);
 
         et.begin();
         em.remove(tratteEffettuate);

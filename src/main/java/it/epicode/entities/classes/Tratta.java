@@ -71,7 +71,7 @@ public class Tratta {
                 ", capolinea='" + capolinea + '\'' +
                 ", tempoMedioPercorrenza=" + tempoMedioPercorrenza +
                 ", mezzi=" + mezzi +
-                ", tratteEffettuate=" + tratteEffettuate +
+//                ", tratteEffettuate=" + tratteEffettuate +
                 '}';
     }
 }

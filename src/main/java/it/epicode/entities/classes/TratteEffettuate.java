@@ -61,5 +61,15 @@ public class TratteEffettuate {
         this.tempoEffettivoTratta = tempoEffettivoTratta;
     }
 
+    @Override
+    public String toString() {
+        return "TratteEffettuate{" +
+                "id=" + id +
+                ", tratta=" + tratta +
+                ", dataTratta=" + dataTratta +
+                ", tempoEffettivoTratta=" + tempoEffettivoTratta +
+                '}';
+    }
+
     //TODO metodo randomTempoEffettivo
 }
