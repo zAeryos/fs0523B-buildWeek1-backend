@@ -45,7 +45,7 @@ public class TitoloEmessoDAO {
 
     }
 
-    //TODO query per controllare tutti i biglietti emessi in un periodo di tempo
-    //TODO query per controllare tutti i biglietti emessi dato un punto di emissione
-    //TODO query per controllare tutti i biglietti emessi dato un punto di emissione ed un periodo di tempo
+    //TODO query per controllare tutti i biglietti emessi in un periodo di tempo *
+    //TODO query per controllare tutti i biglietti emessi dato un punto di emissione *
+    //TODO query per controllare tutti i biglietti emessi dato un punto di emissione ed un periodo di tempo *
 }

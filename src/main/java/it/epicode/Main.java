@@ -55,7 +55,7 @@ public class Main {
         manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
 
 
-        Biglietto       biglietto3      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now());
+        Biglietto       biglietto3      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now(), titoloEmessoDAO);
         System.out.println("Il biglietto è: " + biglietto3 );
         mezzo.vidimaBiglietto(biglietto3,titoloEmessoDAO);
         System.out.println("biglietto vidimato: " + biglietto3);

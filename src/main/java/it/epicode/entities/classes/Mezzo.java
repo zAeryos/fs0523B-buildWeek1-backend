@@ -114,7 +114,6 @@ public class Mezzo {
         titoloEmessoDAO.update(biglietto);
     }
 
-    //TODO metodo per vidimare il biglietto
 
 
     @Override
