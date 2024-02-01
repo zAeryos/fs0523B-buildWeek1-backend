@@ -33,12 +33,13 @@ public class Biglietto extends TitoloEmesso {
         this.valido = valido;
     }
 
-    public void cambiaValidita() {
+    public Biglietto cambiaValidita() {
         if (valido) {
-            valido = false;
+           this.valido = false;
         } else {
             System.out.println("Il biglietto è già stato utilizzato.");
         }
+        return this;
     }
 
     @Override

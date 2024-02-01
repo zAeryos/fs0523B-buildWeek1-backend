@@ -1,5 +1,6 @@
 package it.epicode.dao;
 
+import it.epicode.entities.classes.Manutenzione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -33,6 +34,15 @@ public class TitoloEmessoDAO {
         et.begin();
         em.remove(titoloEmesso);
         et.commit();
+    }
+
+    public void update(TitoloEmesso titoloEmesso) {
+        EntityTransaction   et       = em.getTransaction();
+
+        et.begin();
+        em.persist(titoloEmesso);
+        et.commit();
+
     }
 
     //TODO query per controllare tutti i biglietti emessi in un periodo di tempo

@@ -1,6 +1,7 @@
 package it.epicode.entities.classes;
 
 import it.epicode.dao.MezzoDAO;
+import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
@@ -107,6 +108,10 @@ public class Mezzo {
             System.out.println("Il Mezzo non può effettuare la tratta perchè è in manutenzione");
             return null;
         }
+    }
+    public void vidimaBiglietto(Biglietto biglietto, TitoloEmessoDAO titoloEmessoDAO){
+        biglietto.cambiaValidita();
+        titoloEmessoDAO.update(biglietto);
     }
 
     //TODO metodo per vidimare il biglietto
