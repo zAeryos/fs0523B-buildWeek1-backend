@@ -76,10 +76,10 @@ public class Tessera {
 
     @Override
     public String toString() {
-        return "Tessera{" +
-                "dataEmissione=" + dataEmissione +
-                ", scadenza=" + scadenza +
-                ", abbonamento=" + abbonamento +
+        return "Tessera{"           +
+                "dataEmissione="    + dataEmissione +
+                ", scadenza="       + scadenza      +
+                ", abbonamento="    + abbonamento   +
                 '}';
     }
 }

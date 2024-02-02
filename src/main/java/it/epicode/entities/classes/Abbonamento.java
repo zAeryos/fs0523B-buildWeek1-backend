@@ -27,6 +27,7 @@ public class Abbonamento extends TitoloEmesso {
         this.scadenza       = LocalDateTime.now();
         this.scadenza       = calcolaScadenza();
         this.tessera        = tessera;
+
         this.tessera.setAbbonamento(this);
 
         dao.create(this);
@@ -86,9 +87,9 @@ public class Abbonamento extends TitoloEmesso {
 
     @Override
     public String toString() {
-        return "Abbonamento{" +
-                "periodicita=" + periodicita +
-                ", scadenza=" + scadenza +
+        return "Abbonamento{"   +
+                "periodicita="  + periodicita   +
+                ", scadenza="   + scadenza      +
                 '}';
     }
 }

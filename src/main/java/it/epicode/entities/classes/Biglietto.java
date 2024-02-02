@@ -65,7 +65,7 @@ public class Biglietto extends TitoloEmesso {
     @Override
     public String toString() {
         return "Biglietto{" +
-                "valido=" + valido +
+                "valido="   + valido +
                 '}';
     }
 }

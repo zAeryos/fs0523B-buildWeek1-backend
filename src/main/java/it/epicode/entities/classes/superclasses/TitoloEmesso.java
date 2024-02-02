@@ -49,10 +49,10 @@ public abstract class TitoloEmesso {
 
     @Override
     public String toString() {
-        return "TitoloEmesso{" +
-                "id=" + id +
-                ", puntoDiEmissione=" + puntoDiEmissione +
-                ", dataEmissione=" + dataEmissione +
+        return "TitoloEmesso{"          +
+                "id="                   + id                +
+                ", puntoDiEmissione="   + puntoDiEmissione  +
+                ", dataEmissione="      + dataEmissione     +
                 '}';
     }
 }

@@ -52,6 +52,14 @@ public class Mezzo {
         dao.create(this);
     }
 
+    public List<Biglietto> getBigliettiVidimati() {
+        return bigliettiVidimati;
+    }
+
+    public void setBigliettiVidimati(List<Biglietto> bigliettiVidimati) {
+        this.bigliettiVidimati = bigliettiVidimati;
+    }
+
     public int getCodiceVeicolo() {
         return codiceVeicolo;
     }
@@ -142,12 +150,12 @@ public class Mezzo {
 
     @Override
     public String toString() {
-        return "Mezzo{" +
-                "codiceVeicolo=" + codiceVeicolo +
-                ", capienza=" + capienza +
-                ", statoServizio=" + statoServizio +
-                ", tipoMezzo=" + tipoMezzo +
-                ", tratteEffettuate=" + tratteEffettuate +
+        return "Mezzo{"                 +
+                "codiceVeicolo="        + codiceVeicolo     +
+                ", capienza="           + capienza          +
+                ", statoServizio="      + statoServizio     +
+                ", tipoMezzo="          + tipoMezzo         +
+                ", tratteEffettuate="   + tratteEffettuate  +
                 '}';
     }
 }

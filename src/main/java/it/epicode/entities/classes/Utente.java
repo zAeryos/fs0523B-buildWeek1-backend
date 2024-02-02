@@ -112,14 +112,14 @@ public class Utente {
     @Override
     public String toString() {
         return "Utente{"            +
-                "id="               + id +
-                ", nome='"          + nome + '\'' +
-                ", cognome='"       + cognome + '\'' +
-                ", dataDiNascita="  + dataDiNascita +
-                ", sesso="          + sesso +
-                ", indirizzo='"     + indirizzo + '\'' +
-                ", numeroTelefono=" + numeroTelefono +
-                ", email='"         + email + '\'' +
+                "id="               + id                +
+                ", nome='"          + nome              + '\'' +
+                ", cognome='"       + cognome           + '\'' +
+                ", dataDiNascita="  + dataDiNascita     +
+                ", sesso="          + sesso             +
+                ", indirizzo='"     + indirizzo         + '\'' +
+                ", numeroTelefono=" + numeroTelefono    +
+                ", email='"         + email             + '\'' +
 //                ", tessera=" + tessera +
                 '}';
     }

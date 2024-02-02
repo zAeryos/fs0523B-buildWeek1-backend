@@ -1,7 +1,9 @@
 package it.epicode.dao;
 
+import it.epicode.entities.classes.Abbonamento;
 import it.epicode.entities.classes.DistributoreAutomatico;
 import it.epicode.entities.classes.RivenditoreAutorizzato;
+import it.epicode.entities.classes.Tessera;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -38,6 +40,12 @@ public class PuntoDiEmissioneDAO {
         em.remove(puntoDiEmissione);
         et.commit();
 
+    }
+
+    public Abbonamento validitaAbbonamento(Tessera tessera){
+        return em.createQuery("select a from Abbonamento a where a.tessera = :tessera", Abbonamento.class)
+                .setParameter("tessera", tessera)
+                .getSingleResult();
     }
 
 }
