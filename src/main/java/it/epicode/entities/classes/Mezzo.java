@@ -108,14 +108,18 @@ public class Mezzo {
             return null;
         }
     }
+
+    //TODO metodo per vidimare il biglietto
+
+
     @Override
     public String toString() {
-        return "Mezzo{"                 +
-                "codiceVeicolo="        + codiceVeicolo     +
-                ", capienza="           + capienza          +
-                ", statoServizio="      + statoServizio     +
-                ", tipoMezzo="          + tipoMezzo         +
-                ", tratteEffettuate="   + tratteEffettuate  +
+        return "Mezzo{" +
+                "codiceVeicolo=" + codiceVeicolo +
+                ", capienza=" + capienza +
+                ", statoServizio=" + statoServizio +
+                ", tipoMezzo=" + tipoMezzo +
+                ", tratteEffettuate=" + tratteEffettuate +
                 '}';
     }
 }

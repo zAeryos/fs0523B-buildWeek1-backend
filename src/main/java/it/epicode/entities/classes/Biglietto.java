@@ -16,7 +16,7 @@ public class Biglietto extends TitoloEmesso {
 
     public Biglietto(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione) {
         super(puntoDiEmissione, dataEmissione);
-        this.valido         = true;
+        this.valido = true;
 
         TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
@@ -44,7 +44,7 @@ public class Biglietto extends TitoloEmesso {
     @Override
     public String toString() {
         return "Biglietto{" +
-                "valido="   + valido +
+                "valido=" + valido +
                 '}';
     }
 }
