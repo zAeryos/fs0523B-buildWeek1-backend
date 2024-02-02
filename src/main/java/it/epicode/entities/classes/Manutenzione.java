@@ -74,10 +74,10 @@ public class Manutenzione {
 
     @Override
     public String toString() {
-        return "Manutenzione{" +
-                "id=" + id +
-                ", dataInizio=" + dataInizio +
-                ", dataFine=" + dataFine +
+        return "Manutenzione{"  +
+                "id="           + id            +
+                ", dataInizio=" + dataInizio    +
+                ", dataFine="   + dataFine      +
                 '}';
     }
 }

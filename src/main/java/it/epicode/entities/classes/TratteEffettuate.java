@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Random;
 
 @Entity
 @Table(name = "tratte_effettuate")
@@ -27,13 +28,13 @@ public class TratteEffettuate {
     public TratteEffettuate() {
     }
 
-    public TratteEffettuate(Mezzo mezzo, Tratta tratta, LocalDateTime dataTratta, int tempoEffettivoTratta) {
-        this.mezzo = mezzo;
-        this.tratta = tratta;
-        this.dataTratta = dataTratta;
-        this.tempoEffettivoTratta = tempoEffettivoTratta;
+    public TratteEffettuate(Mezzo mezzo, Tratta tratta, LocalDateTime dataTratta) {
+        this.mezzo                  = mezzo;
+        this.tratta                 = tratta;
+        this.dataTratta             = dataTratta;
+        this.tempoEffettivoTratta   = calcolaTempoEffettivoRandom();
 
-        TratteEffettuateDAO dao = new TratteEffettuateDAO();
+        TratteEffettuateDAO dao     = new TratteEffettuateDAO();
         dao.create(this);
     }
 
@@ -65,16 +66,23 @@ public class TratteEffettuate {
         this.tempoEffettivoTratta = tempoEffettivoTratta;
     }
 
+    public int calcolaTempoEffettivoRandom() {
+        Random  random          = new Random();
 
+        int     tempoMedio      = tratta.getTempoMedioPercorrenza();
+        int     tempoMinimo     = tempoMedio - 10;
+        int     tempoMassimo    = tempoMedio + 10;
+
+        return random.nextInt(tempoMassimo - tempoMinimo + 1) + tempoMinimo;
+    }
 
     @Override
     public String toString() {
-        return "TratteEffettuate{" +
-                "id=" + id +
-                ", tratta=" + tratta +
-                ", dataTratta=" + dataTratta +
-                ", tempoEffettivoTratta=" + tempoEffettivoTratta +
+        return "TratteEffettuate{"          +
+                "id="                       + id +
+                ", tratta="                 + tratta +
+                ", dataTratta="             + dataTratta +
+                ", tempoEffettivoTratta="   + tempoEffettivoTratta +
                 '}';
     }
-
 }

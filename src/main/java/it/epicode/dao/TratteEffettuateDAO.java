@@ -28,7 +28,7 @@ public class TratteEffettuateDAO {
     }
 
     public void delete(int id) {
-        EntityTransaction   et                = em.getTransaction();
+        EntityTransaction   et            = em.getTransaction();
         TratteEffettuate tratteEffettuate = getById(id);
 
         et.begin();
@@ -37,6 +37,14 @@ public class TratteEffettuateDAO {
 
     }
 
-    //TODO metodo per tenere traccia del tempo effettivo di percorrenza di ogni tratta effettuata
+
+    public int getTempoEffettivoTratta(int tratta) {
+        return em.createQuery("select t.tempoEffettivoTratta from TratteEffettuate t where t.tratta.id = :trattaId", Integer.class)
+        .setParameter("trattaId", tratta)
+        .getSingleResult();
+
+    }
+
+
 
 }

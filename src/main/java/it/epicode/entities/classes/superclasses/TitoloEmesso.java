@@ -46,4 +46,13 @@ public abstract class TitoloEmesso {
         this.dataEmissione = dataEmissione;
     }
 
+
+    @Override
+    public String toString() {
+        return "TitoloEmesso{" +
+                "id=" + id +
+                ", puntoDiEmissione=" + puntoDiEmissione +
+                ", dataEmissione=" + dataEmissione +
+                '}';
+    }
 }

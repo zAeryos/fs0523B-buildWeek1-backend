@@ -7,8 +7,6 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import java.time.LocalDate;
-
 @Entity
 @Table(name = "rivenditore_autorizzato")
 public class RivenditoreAutorizzato extends PuntoDiEmissione {
@@ -23,22 +21,19 @@ public class RivenditoreAutorizzato extends PuntoDiEmissione {
     public RivenditoreAutorizzato() {
     }
 
-    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore) {
+    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore, PuntoDiEmissioneDAO dao) {
         super(statoAttivita);
         this.nomeRivenditore        = nomeRivenditore;
         this.luogoRivenditore       = luogoRivenditore;
 
-        PuntoDiEmissioneDAO dao     = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }
 
-    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore, String indirizzoRivenditore) {
+    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore, String indirizzoRivenditore, PuntoDiEmissioneDAO dao) {
         super(statoAttivita);
         this.nomeRivenditore        = nomeRivenditore;
         this.luogoRivenditore       = luogoRivenditore;
         this.indirizzoRivenditore   = indirizzoRivenditore;
-
-        PuntoDiEmissioneDAO dao     = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }
 
@@ -64,5 +59,14 @@ public class RivenditoreAutorizzato extends PuntoDiEmissione {
 
     public void setIndirizzoRivenditore(String indirizzoRivenditore) {
         this.indirizzoRivenditore = indirizzoRivenditore;
+    }
+
+    @Override
+    public String toString() {
+        return "RivenditoreAutorizzato{" +
+                "nomeRivenditore='" + nomeRivenditore + '\'' +
+                ", luogoRivenditore='" + luogoRivenditore + '\'' +
+                ", indirizzoRivenditore='" + indirizzoRivenditore + '\'' +
+                '}';
     }
 }

@@ -33,12 +33,12 @@ public class Utente {
     }
 
     public Utente(String nome, String cognome, LocalDate dataDiNascita, String email) {
-        this.nome = nome;
-        this.cognome = cognome;
-        this.dataDiNascita = dataDiNascita;
-        this.email = email;
+        this.nome           = nome;
+        this.cognome        = cognome;
+        this.dataDiNascita  = dataDiNascita;
+        this.email          = email;
 
-        UtenteDAO dao = new UtenteDAO();
+        UtenteDAO dao       = new UtenteDAO();
         dao.create(this);
     }
 
@@ -111,15 +111,15 @@ public class Utente {
 
     @Override
     public String toString() {
-        return "Utente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", dataDiNascita=" + dataDiNascita +
-                ", sesso=" + sesso +
-                ", indirizzo='" + indirizzo + '\'' +
+        return "Utente{"            +
+                "id="               + id +
+                ", nome='"          + nome + '\'' +
+                ", cognome='"       + cognome + '\'' +
+                ", dataDiNascita="  + dataDiNascita +
+                ", sesso="          + sesso +
+                ", indirizzo='"     + indirizzo + '\'' +
                 ", numeroTelefono=" + numeroTelefono +
-                ", email='" + email + '\'' +
+                ", email='"         + email + '\'' +
 //                ", tessera=" + tessera +
                 '}';
     }

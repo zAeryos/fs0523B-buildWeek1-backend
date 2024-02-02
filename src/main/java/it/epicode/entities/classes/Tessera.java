@@ -17,19 +17,18 @@ public class Tessera {
     @Column(name = "data_emissione", nullable = false)
     private LocalDateTime   dataEmissione;
     @Column(nullable = false)
-    private LocalDateTime       scadenza;
+    private LocalDateTime   scadenza;
     @OneToOne(mappedBy = "tessera")
     private Abbonamento     abbonamento;
 
     public Tessera() {
     }
 
-    public Tessera(Utente utente) {
-        this.utente = utente;
-        this.dataEmissione = LocalDateTime.now();
-        this.scadenza = this.dataEmissione.plusDays(365);
+    public Tessera(Utente utente, TesseraDAO dao) {
+        this.utente         = utente;
+        this.dataEmissione  = LocalDateTime.now();
+        this.scadenza       = this.dataEmissione.plusDays(365);
 
-        TesseraDAO dao = new TesseraDAO();
         dao.create(this);
     }
 

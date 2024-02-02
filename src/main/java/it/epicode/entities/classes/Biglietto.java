@@ -3,8 +3,7 @@ package it.epicode.entities.classes;
 import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +12,13 @@ import java.time.LocalDateTime;
 public class Biglietto extends TitoloEmesso {
 
     private boolean valido;
+
+    @ManyToOne
+    @JoinColumn(name = "mezzo_fk")
+    private Mezzo mezzo;
+
+    @Column(name = "data_vidimazione")
+    private LocalDateTime dataVidimazione;
 
     public Biglietto(PuntoDiEmissione puntoDiEmissione, TitoloEmessoDAO dao) {
         super(puntoDiEmissione);
@@ -38,6 +44,22 @@ public class Biglietto extends TitoloEmesso {
             System.out.println("Il biglietto è già stato utilizzato.");
         }
         return this;
+    }
+
+    public Mezzo getMezzo() {
+        return mezzo;
+    }
+
+    public void setMezzo(Mezzo mezzo) {
+        this.mezzo = mezzo;
+    }
+
+    public LocalDateTime getDataVidimazione() {
+        return dataVidimazione;
+    }
+
+    public void setDataVidimazione(LocalDateTime dataVidimazione) {
+        this.dataVidimazione = dataVidimazione;
     }
 
     @Override

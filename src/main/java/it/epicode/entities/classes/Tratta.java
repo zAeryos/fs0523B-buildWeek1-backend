@@ -72,12 +72,12 @@ public class Tratta {
 
     @Override
     public String toString() {
-        return "Tratta{" +
-                "id=" + id +
-                ", zonaDiPartenza='" + zonaDiPartenza + '\'' +
-                ", capolinea='" + capolinea + '\'' +
-                ", tempoMedioPercorrenza=" + tempoMedioPercorrenza +
-                ", mezzi=" + mezzi +
+        return "Tratta{"                    +
+                "id="                       + id +
+                ", zonaDiPartenza='"        + zonaDiPartenza + '\'' +
+                ", capolinea='"             + capolinea + '\'' +
+                ", tempoMedioPercorrenza="  + tempoMedioPercorrenza +
+                ", mezzi="                  + mezzi +
 //                ", tratteEffettuate=" + tratteEffettuate +
                 '}';
     }

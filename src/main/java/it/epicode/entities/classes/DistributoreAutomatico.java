@@ -12,12 +12,13 @@ import java.util.Scanner;
 @Table(name = "distributore_automatico")
 public class DistributoreAutomatico extends PuntoDiEmissione {
 
-    public DistributoreAutomatico(StatoAttivita statoAttivita) {
+    public DistributoreAutomatico(StatoAttivita statoAttivita, PuntoDiEmissioneDAO dao) {
         super(statoAttivita);
 
-        PuntoDiEmissioneDAO dao = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }
+
+    public DistributoreAutomatico(){}
 
     public void stampaBiglietto() {
         Scanner scanner = new Scanner(System.in);
