@@ -1,8 +1,6 @@
 package it.epicode.dao;
 
-import it.epicode.entities.classes.Biglietto;
-import it.epicode.entities.classes.Manutenzione;
-import it.epicode.entities.classes.Mezzo;
+import it.epicode.entities.classes.*;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.EntityManager;
@@ -91,6 +89,11 @@ public class TitoloEmessoDAO {
                 .setParameter("periodoFinale", periodoFinale)
                 .getResultList();
 
+    }
+    public Abbonamento validitaAbbonamento(Tessera tessera){
+        return em.createQuery("select a from Abbonamento a where a.tessera = :tessera", Abbonamento.class)
+                .setParameter("tessera", tessera)
+                .getSingleResult();
     }
 
 

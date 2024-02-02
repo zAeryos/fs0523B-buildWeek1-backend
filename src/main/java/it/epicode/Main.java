@@ -45,20 +45,24 @@ public class Main {
         Abbonamento             abbonamento             = new Abbonamento(distributoreAutomatico, Periodicita.MENSILE, tessera, titoloEmessoDAO);
         Tratta                  tratta                  = new Tratta("Roma", "Milano", 220);
         Mezzo                   mezzo                   = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta, mezzoDAO);
-        TratteEffettuate        tratteEffettuate        = new TratteEffettuate(mezzoDAO.getById(3902), tratta, LocalDateTime.now());
+//        TratteEffettuate        tratteEffettuate        = new TratteEffettuate(mezzoDAO.getById(3902), tratta, LocalDateTime.now());
         Manutenzione            manutenzione            = new Manutenzione(LocalDate.now(), mezzo, manutenzioneDAO, mezzoDAO);
 
         Biglietto               bigliettoTest           = distributoreAutomatico.emettiBiglietto();
         Abbonamento             abbonamentoTest         = distributoreAutomatico.emettiAbbonamento(Periodicita.MENSILE, tessera2, titoloEmessoDAO);
         Tessera                 tesseraTest             = distributoreAutomatico.emettiTessera(utente2, tesseraDAO);
 
-        manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
-        mezzo.vidimaBiglietto(biglietto1, titoloEmessoDAO);
-        mezzo.vidimaBiglietto(biglietto3, titoloEmessoDAO);
-        titoloEmessoDAO.bigliettiVidimatiPerTempo(LocalDateTime.of(2024,01,01,0,0), LocalDateTime.of(2024, 02,02,0,0));
-        System.out.println(titoloEmessoDAO.bigliettiVidimatiPerMezzo(mezzo));
-        System.out.println(mezzoDAO.contatoreTratteEffettuate(mezzoDAO.getById(3902)));
-        System.out.println(tratteEffettuateDAO.getTempoEffettivoTratta(4052));
+//        manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
+//        mezzo.vidimaBiglietto(biglietto1, titoloEmessoDAO);
+//        mezzo.vidimaBiglietto(biglietto3, titoloEmessoDAO);
+//        titoloEmessoDAO.bigliettiVidimatiPerTempo(LocalDateTime.of(2024,01,01,0,0), LocalDateTime.of(2024, 02,02,0,0));
+//        System.out.println(titoloEmessoDAO.bigliettiVidimatiPerMezzo(mezzo));
+//        System.out.println(mezzoDAO.contatoreTratteEffettuate(mezzoDAO.getById(3902)));
+//        System.out.println(tratteEffettuateDAO.getTempoEffettivoTratta(4052));
+
+        System.out.println(titoloEmessoDAO.validitaAbbonamento(tessera));
+
+
 
 
 
