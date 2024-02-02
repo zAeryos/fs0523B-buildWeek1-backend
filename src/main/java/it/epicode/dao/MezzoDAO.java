@@ -53,8 +53,6 @@ public class MezzoDAO {
 
 
 
-
-
     //TODO metodo per stampare il periodo di attività *
     //TODO metodo per controllare i biglietti vidimati in quel mezzo *
     //TODO metodo per controllare i biglietti vidimati in un periodo di tempo *

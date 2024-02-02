@@ -20,16 +20,15 @@ public class Abbonamento extends TitoloEmesso {
     private Tessera         tessera;
     private LocalDateTime   scadenza;
 
-    public Abbonamento(PuntoDiEmissione puntoDiEmissione, Periodicita periodicita, Tessera tessera) {
+    public Abbonamento(PuntoDiEmissione puntoDiEmissione, Periodicita periodicita, Tessera tessera, TitoloEmessoDAO dao) {
         super(puntoDiEmissione);
 
-        this.periodicita = periodicita;
-        this.scadenza = LocalDateTime.now();
-        this.scadenza = calcolaScadenza();
-        this.tessera = tessera;
+        this.periodicita    = periodicita;
+        this.scadenza       = LocalDateTime.now();
+        this.scadenza       = calcolaScadenza();
+        this.tessera        = tessera;
         this.tessera.setAbbonamento(this);
 
-        TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
     }
 

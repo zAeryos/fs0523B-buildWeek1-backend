@@ -1,6 +1,7 @@
 package it.epicode.entities.classes.superclasses;
 
 import it.epicode.dao.PuntoDiEmissioneDAO;
+import it.epicode.dao.TesseraDAO;
 import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.entities.classes.*;
 import it.epicode.entities.enums.Periodicita;
@@ -68,9 +69,9 @@ public abstract class PuntoDiEmissione {
         }
     }
 
-    public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera) {
+    public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera, TitoloEmessoDAO dao) {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Abbonamento(this, periodicita, tessera);
+            return new Abbonamento(this, periodicita, tessera, dao);
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;
@@ -82,9 +83,9 @@ public abstract class PuntoDiEmissione {
 
 
 
-    public Tessera emettiTessera(Utente utente) {
+    public Tessera emettiTessera(Utente utente, TesseraDAO dao) {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Tessera(utente);
+            return new Tessera(utente, dao);
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;

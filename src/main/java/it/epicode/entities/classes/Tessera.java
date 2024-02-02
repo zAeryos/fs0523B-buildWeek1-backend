@@ -24,12 +24,11 @@ public class Tessera {
     public Tessera() {
     }
 
-    public Tessera(Utente utente) {
+    public Tessera(Utente utente, TesseraDAO dao) {
         this.utente         = utente;
         this.dataEmissione  = LocalDateTime.now();
         this.scadenza       = this.dataEmissione.plusDays(365);
 
-        TesseraDAO dao      = new TesseraDAO();
         dao.create(this);
     }
 
