@@ -50,7 +50,7 @@ public abstract class PuntoDiEmissione {
 
     public Biglietto emettiBiglietto() {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Biglietto(this, LocalDateTime.now(), new TitoloEmessoDAO());
+            return new Biglietto(this, new TitoloEmessoDAO());
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;
@@ -62,7 +62,7 @@ public abstract class PuntoDiEmissione {
 
     public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera) {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Abbonamento(this, LocalDateTime.now(), periodicita, tessera);
+            return new Abbonamento(this, periodicita, tessera);
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;
@@ -71,6 +71,8 @@ public abstract class PuntoDiEmissione {
             return null;
         }
     }
+
+
 
     public Tessera emettiTessera(Utente utente) {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {

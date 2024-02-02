@@ -21,9 +21,9 @@ public abstract class TitoloEmesso {
     public TitoloEmesso() {
     }
 
-    public TitoloEmesso(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione) {
+    public TitoloEmesso(PuntoDiEmissione puntoDiEmissione) {
         this.puntoDiEmissione = puntoDiEmissione;
-        this.dataEmissione = dataEmissione;
+        this.dataEmissione = LocalDateTime.now();
     }
 
     public int getId() {

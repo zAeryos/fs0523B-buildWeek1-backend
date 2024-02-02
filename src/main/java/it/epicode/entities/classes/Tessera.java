@@ -69,9 +69,11 @@ public class Tessera {
     }
 
     public void rinnovaTessera() {
-        LocalDateTime nuovaDataScadenza = LocalDateTime.now();
+        this.scadenza = LocalDateTime.now();
         this.scadenza = this.scadenza.plusDays(365);
+
     }
+
 
     @Override
     public String toString() {

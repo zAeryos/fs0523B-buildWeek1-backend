@@ -20,8 +20,9 @@ public class Abbonamento extends TitoloEmesso {
     private Tessera         tessera;
     private LocalDateTime   scadenza;
 
-    public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione, Periodicita periodicita, Tessera tessera) {
-        super(puntoDiEmissione, dataEmissione);
+    public Abbonamento(PuntoDiEmissione puntoDiEmissione, Periodicita periodicita, Tessera tessera) {
+        super(puntoDiEmissione);
+
         this.periodicita = periodicita;
         this.scadenza = LocalDateTime.now();
         this.scadenza = calcolaScadenza();
@@ -44,7 +45,7 @@ public class Abbonamento extends TitoloEmesso {
         calcolaScadenza();
     }
 
-    public LocalDateTime calcolaScadenza () { //TODO data scadenza
+    public LocalDateTime calcolaScadenza () {
         if (periodicita == Periodicita.SETTIMANALE) {
             return this.scadenza = this.scadenza.plusDays(7);
         } else if (periodicita == Periodicita.MENSILE) {
@@ -69,6 +70,19 @@ public class Abbonamento extends TitoloEmesso {
 
     public void setScadenza(LocalDateTime scadenza) {
         this.scadenza = scadenza;
+    }
+    public void rinnovaAbbonamento(Periodicita periodicita) {
+            this.scadenza = LocalDateTime.now();
+        if (periodicita == Periodicita.SETTIMANALE){
+            this.scadenza = this.scadenza.plusDays(7);
+            this.periodicita = Periodicita.SETTIMANALE;
+        } else if (periodicita == Periodicita.MENSILE) {
+            this.scadenza = this.scadenza.plusDays(30);
+            this.periodicita = Periodicita.MENSILE;
+        } else if(periodicita == Periodicita.ANNUALE){
+            this.scadenza = this.scadenza.plusDays(365);
+            this.periodicita = Periodicita.ANNUALE;
+        }
     }
 
     @Override

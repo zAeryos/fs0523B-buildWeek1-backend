@@ -28,8 +28,7 @@ public class Main {
 //        Biglietto       biglietto1      = new Biglietto(distributoreAutomatico, LocalDateTime.now());
 //        Biglietto       biglietto2      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now());
         Tessera         tessera         = new Tessera(utente1);
-        Abbonamento     abbonamento     = new Abbonamento(distributoreAutomatico, LocalDateTime.of(2020,5,16,6,20), Periodicita.SETTIMANALE, tessera);
-        System.out.println(tessera);
+//        Abbonamento     abbonamento     = new Abbonamento(distributoreAutomatico, Periodicita.SETTIMANALE, tessera);
 
 //        puntoDiEmissioneDAO.create(distributoreAutomatico);
 //        utenteDAO.create(utente1);
@@ -69,9 +68,17 @@ public class Main {
 //            rivenditoreAutorizzato.emettiTessera(utente1);
 //         distributoreAutomatico.emettiBiglietto();
 
-
 //        abbonamento.setScadenza(LocalDateTime.of(2020,2,1,1,1));
-        mezzo.controllaAbbonamento(tessera);
+//        mezzo.controllaAbbonamento(tessera);
+//        abbonamento.rinnovaAbbonamento(Periodicita.MENSILE);
+
+        System.out.println(tessera);
+        tessera.setScadenza(LocalDateTime.of(2020,5,5,5,2));
+        System.out.println(tessera);
+        tessera.rinnovaTessera();
+        System.out.println(tessera);
+
+
 
     }
 }
