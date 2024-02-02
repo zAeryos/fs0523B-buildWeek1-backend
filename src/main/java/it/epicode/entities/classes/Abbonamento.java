@@ -20,12 +20,14 @@ public class Abbonamento extends TitoloEmesso {
     private Tessera         tessera;
     private LocalDateTime   scadenza;
 
-    public Abbonamento(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione, Periodicita periodicita, Tessera tessera) {
-        super(puntoDiEmissione, dataEmissione);
-        this.periodicita    = periodicita;
-        this.scadenza       = LocalDateTime.now();
-        this.scadenza       = calcolaScadenza();
-        this.tessera        = tessera;
+    public Abbonamento(PuntoDiEmissione puntoDiEmissione, Periodicita periodicita, Tessera tessera) {
+        super(puntoDiEmissione);
+
+        this.periodicita = periodicita;
+        this.scadenza = LocalDateTime.now();
+        this.scadenza = calcolaScadenza();
+        this.tessera = tessera;
+        this.tessera.setAbbonamento(this);
 
         TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
@@ -69,13 +71,25 @@ public class Abbonamento extends TitoloEmesso {
     public void setScadenza(LocalDateTime scadenza) {
         this.scadenza = scadenza;
     }
+    public void rinnovaAbbonamento(Periodicita periodicita) {
+            this.scadenza = LocalDateTime.now();
+        if (periodicita == Periodicita.SETTIMANALE){
+            this.scadenza = this.scadenza.plusDays(7);
+            this.periodicita = Periodicita.SETTIMANALE;
+        } else if (periodicita == Periodicita.MENSILE) {
+            this.scadenza = this.scadenza.plusDays(30);
+            this.periodicita = Periodicita.MENSILE;
+        } else if(periodicita == Periodicita.ANNUALE){
+            this.scadenza = this.scadenza.plusDays(365);
+            this.periodicita = Periodicita.ANNUALE;
+        }
+    }
 
     @Override
     public String toString() {
-        return "Abbonamento{"   +
-                "periodicita="  + periodicita   +
-                ", tessera="    + tessera       +
-                ", scadenza="   + scadenza      +
+        return "Abbonamento{" +
+                "periodicita=" + periodicita +
+                ", scadenza=" + scadenza +
                 '}';
     }
 }

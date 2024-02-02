@@ -23,7 +23,7 @@ public abstract class PuntoDiEmissione {
     @Column(name = "titoli_emessi")
     private List<TitoloEmesso> titoliEmessi;
 
-    @Column(name = "stato_attivita", nullable = false)
+    @Column(name = "stato_attivita")
     @Enumerated(EnumType.STRING)
     private StatoAttivita       statoAttivita;
 
@@ -48,9 +48,17 @@ public abstract class PuntoDiEmissione {
         this.titoliEmessi.add(titoloEmesso);
     }
 
+    public StatoAttivita getStatoAttivita() {
+        return statoAttivita;
+    }
+
+    public void setStatoAttivita(StatoAttivita statoAttivita) {
+        this.statoAttivita = statoAttivita;
+    }
+
     public Biglietto emettiBiglietto() {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Biglietto(this, LocalDateTime.now());
+            return new Biglietto(this, new TitoloEmessoDAO());
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;
@@ -62,7 +70,7 @@ public abstract class PuntoDiEmissione {
 
     public Abbonamento emettiAbbonamento(Periodicita periodicita, Tessera tessera) {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Abbonamento(this, LocalDateTime.now(), periodicita, tessera);
+            return new Abbonamento(this, periodicita, tessera);
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;
@@ -71,6 +79,8 @@ public abstract class PuntoDiEmissione {
             return null;
         }
     }
+
+
 
     public Tessera emettiTessera(Utente utente) {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {

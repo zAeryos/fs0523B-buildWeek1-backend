@@ -14,11 +14,9 @@ public class Biglietto extends TitoloEmesso {
 
     private boolean valido;
 
-    public Biglietto(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataEmissione) {
-        super(puntoDiEmissione, dataEmissione);
+    public Biglietto(PuntoDiEmissione puntoDiEmissione, TitoloEmessoDAO dao) {
+        super(puntoDiEmissione);
         this.valido = true;
-
-        TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
     }
 
@@ -33,12 +31,13 @@ public class Biglietto extends TitoloEmesso {
         this.valido = valido;
     }
 
-    public void cambiaValidita() {
+    public Biglietto cambiaValidita() {
         if (valido) {
-            valido = false;
+           this.valido = false;
         } else {
             System.out.println("Il biglietto è già stato utilizzato.");
         }
+        return this;
     }
 
     @Override

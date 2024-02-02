@@ -1,6 +1,7 @@
 package it.epicode.entities.classes;
 
 import it.epicode.dao.MezzoDAO;
+import it.epicode.dao.TitoloEmessoDAO;
 import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
@@ -100,7 +101,7 @@ public class Mezzo {
 
     public TratteEffettuate effettuaTratta(Tratta tratta, int tempoEffettivoTratta){
         if (this.statoServizio == StatoServizio.IN_SERVIZIO) {
-            TratteEffettuate trattaEffettuata = new TratteEffettuate(this, tratta, LocalDateTime.now());
+            TratteEffettuate trattaEffettuata = new TratteEffettuate(this, tratta, LocalDateTime.now(), tempoEffettivoTratta);
             System.out.println(trattaEffettuata);
             return  trattaEffettuata;
         } else {
@@ -108,8 +109,28 @@ public class Mezzo {
             return null;
         }
     }
+    public void vidimaBiglietto(Biglietto biglietto, TitoloEmessoDAO titoloEmessoDAO){
+        biglietto.cambiaValidita();
+        titoloEmessoDAO.update(biglietto);
+    }
+    public void controllaAbbonamento(Tessera tessera){
+        try {
+            if (tessera.getScadenza().isAfter(LocalDateTime.now())) {
+                if (tessera.getAbbonamento().getScadenza().isAfter(LocalDateTime.now())) {
+                    System.out.println("L'abbonamento è valido");
+                } else {
+                    System.out.println("l'abbonamento è scaduto");
+                }
+            } else {
+                System.out.println("La Tessera è scaduta");
+            }
+        } catch (NullPointerException e){
+            System.out.println("La Tessera non ha un abbonamento");
+        }
 
-    //TODO metodo per vidimare il biglietto
+    }
+
+
 
     @Override
     public String toString() {
