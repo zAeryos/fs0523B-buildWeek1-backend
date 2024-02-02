@@ -28,8 +28,8 @@ public class Main {
 
                                                     /* --- Rivenditori --- */
 
-        DistributoreAutomatico  distributoreAutomatico  = new DistributoreAutomatico(StatoAttivita.ATTIVO);
-        RivenditoreAutorizzato  rivenditoreAutorizzato  = new RivenditoreAutorizzato(StatoAttivita.APERTO,"Rivenditore2000", "Napoli");
+        DistributoreAutomatico  distributoreAutomatico  = new DistributoreAutomatico(StatoAttivita.ATTIVO, puntoDiEmissioneDAO);
+        RivenditoreAutorizzato  rivenditoreAutorizzato  = new RivenditoreAutorizzato(StatoAttivita.APERTO,"Rivenditore2000", "Napoli", puntoDiEmissioneDAO);
 
                                                       /* --- Utenti --- */
 
@@ -38,12 +38,14 @@ public class Main {
         Utente                  utente3                 = new Utente("Emanuele", "Barone", LocalDate.of(1996, 5, 22), "barone.emanuele8@gmail.com");
         Biglietto               biglietto1              = new Biglietto(distributoreAutomatico, titoloEmessoDAO);
         Biglietto               biglietto2              = new Biglietto(rivenditoreAutorizzato, titoloEmessoDAO);
+        Biglietto               biglietto3              = new Biglietto(rivenditoreAutorizzato, titoloEmessoDAO);
+
         Tessera                 tessera                 = new Tessera(utente1, tesseraDAO);
         Tessera                 tessera2                = new Tessera(utente3, tesseraDAO);
         Abbonamento             abbonamento             = new Abbonamento(distributoreAutomatico, Periodicita.MENSILE, tessera, titoloEmessoDAO);
         Tratta                  tratta                  = new Tratta("Roma", "Milano", 220);
         Mezzo                   mezzo                   = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta, mezzoDAO);
-        TratteEffettuate        tratteEffettuate        = new TratteEffettuate(mezzo, tratta, LocalDateTime.now());
+        TratteEffettuate        tratteEffettuate        = new TratteEffettuate(mezzoDAO.getById(3902), tratta, LocalDateTime.now());
         Manutenzione            manutenzione            = new Manutenzione(LocalDate.now(), mezzo, manutenzioneDAO, mezzoDAO);
 
         Biglietto               bigliettoTest           = distributoreAutomatico.emettiBiglietto();
@@ -51,6 +53,12 @@ public class Main {
         Tessera                 tesseraTest             = distributoreAutomatico.emettiTessera(utente2, tesseraDAO);
 
         manutenzione.setDataFine(manutenzioneDAO, mezzoDAO);
+        mezzo.vidimaBiglietto(biglietto1, titoloEmessoDAO);
+        mezzo.vidimaBiglietto(biglietto3, titoloEmessoDAO);
+        titoloEmessoDAO.bigliettiVidimatiPerTempo(LocalDateTime.of(2024,01,01,0,0), LocalDateTime.of(2024, 02,02,0,0));
+        System.out.println(titoloEmessoDAO.bigliettiVidimatiPerMezzo(mezzo));
+        System.out.println(mezzoDAO.contatoreTratteEffettuate(mezzoDAO.getById(3902)));
+
 
 
 

@@ -2,6 +2,7 @@ package it.epicode.entities.classes;
 
 import it.epicode.dao.MezzoDAO;
 import it.epicode.dao.TitoloEmessoDAO;
+import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import it.epicode.entities.enums.StatoServizio;
 import it.epicode.entities.enums.TipoMezzo;
 import jakarta.persistence.*;
@@ -34,6 +35,10 @@ public class Mezzo {
     @OneToMany(mappedBy = "mezzo")
     @Column(name = "tratte_effettuate")
     private List<TratteEffettuate>  tratteEffettuate;
+
+    @OneToMany(mappedBy = "mezzo")
+    @Column(name = "biglietti_vidimati")
+    private List<Biglietto> bigliettiVidimati;
 
     public Mezzo() {
     }
@@ -109,8 +114,11 @@ public class Mezzo {
             return null;
         }
     }
+
     public void vidimaBiglietto(Biglietto biglietto, TitoloEmessoDAO titoloEmessoDAO){
         biglietto.cambiaValidita();
+        biglietto.setMezzo(this);
+        biglietto.setDataVidimazione(LocalDateTime.now());
         titoloEmessoDAO.update(biglietto);
     }
     public void controllaAbbonamento(Tessera tessera){

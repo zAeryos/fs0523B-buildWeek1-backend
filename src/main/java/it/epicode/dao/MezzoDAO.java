@@ -1,8 +1,7 @@
 package it.epicode.dao;
 
-import it.epicode.entities.classes.Manutenzione;
-import it.epicode.entities.classes.Mezzo;
-import it.epicode.entities.classes.Tessera;
+import it.epicode.entities.classes.*;
+import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -52,10 +51,15 @@ public class MezzoDAO {
     }
 
 
+    public int contatoreTratteEffettuate(Mezzo mezzo){
 
-    //TODO metodo per stampare il periodo di attività *
-    //TODO metodo per controllare i biglietti vidimati in quel mezzo *
-    //TODO metodo per controllare i biglietti vidimati in un periodo di tempo *
-    //TODO metodo per tenere traccia di numero di volte che un mezzo percorre una tratta effettuata *
+        return em.createQuery("select count (t) from TratteEffettuate t where mezzo = :mezzo", Long.class)
+                .setParameter("mezzo", mezzo)
+                .getSingleResult()
+                .intValue();
+
+    }
+
+    //TODO metodo per stampare il periodo di attività  !optional!
 
 }

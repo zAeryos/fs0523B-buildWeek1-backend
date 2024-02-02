@@ -1,6 +1,8 @@
 package it.epicode.dao;
 
+import it.epicode.entities.classes.Biglietto;
 import it.epicode.entities.classes.Manutenzione;
+import it.epicode.entities.classes.Mezzo;
 import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.EntityManager;
@@ -74,4 +76,23 @@ public class TitoloEmessoDAO {
                 .getResultList();
     }
 
+    public List<Biglietto> bigliettiVidimatiPerMezzo(Mezzo mezzo){
+
+        return em.createQuery("select b from Biglietto b where b.mezzo = :mezzo", Biglietto.class)
+                .setParameter("mezzo", mezzo)
+                .getResultList();
+
+    }
+
+    public List<Biglietto> bigliettiVidimatiPerTempo(LocalDateTime periodoIniziale, LocalDateTime periodoFinale){
+
+        return em.createQuery("select b from Biglietto b where b.dataVidimazione between :periodoIniziale and :periodoFinale", Biglietto.class)
+                .setParameter("periodoIniziale", periodoIniziale)
+                .setParameter("periodoFinale", periodoFinale)
+                .getResultList();
+
+    }
+
+
 }
+

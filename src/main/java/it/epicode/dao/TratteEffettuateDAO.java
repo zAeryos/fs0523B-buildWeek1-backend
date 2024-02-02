@@ -39,4 +39,5 @@ public class TratteEffettuateDAO {
 
     //TODO metodo per tenere traccia del tempo effettivo di percorrenza di ogni tratta effettuata
 
+
 }

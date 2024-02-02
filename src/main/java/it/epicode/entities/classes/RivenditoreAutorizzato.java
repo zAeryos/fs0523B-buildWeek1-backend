@@ -21,22 +21,19 @@ public class RivenditoreAutorizzato extends PuntoDiEmissione {
     public RivenditoreAutorizzato() {
     }
 
-    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore) {
+    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore, PuntoDiEmissioneDAO dao) {
         super(statoAttivita);
         this.nomeRivenditore        = nomeRivenditore;
         this.luogoRivenditore       = luogoRivenditore;
 
-        PuntoDiEmissioneDAO dao     = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }
 
-    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore, String indirizzoRivenditore) {
+    public RivenditoreAutorizzato(StatoAttivita statoAttivita, String nomeRivenditore, String luogoRivenditore, String indirizzoRivenditore, PuntoDiEmissioneDAO dao) {
         super(statoAttivita);
         this.nomeRivenditore        = nomeRivenditore;
         this.luogoRivenditore       = luogoRivenditore;
         this.indirizzoRivenditore   = indirizzoRivenditore;
-
-        PuntoDiEmissioneDAO dao     = new PuntoDiEmissioneDAO();
         dao.create((PuntoDiEmissione)this);
     }
 
