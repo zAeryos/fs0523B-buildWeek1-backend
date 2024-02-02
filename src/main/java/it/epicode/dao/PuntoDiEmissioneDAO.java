@@ -40,5 +40,4 @@ public class PuntoDiEmissioneDAO {
 
     }
 
-    //TODO update per cambiare lo stato di servizio
 }

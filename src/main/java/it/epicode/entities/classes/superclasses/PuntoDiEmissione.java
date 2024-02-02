@@ -48,6 +48,14 @@ public abstract class PuntoDiEmissione {
         this.titoliEmessi.add(titoloEmesso);
     }
 
+    public StatoAttivita getStatoAttivita() {
+        return statoAttivita;
+    }
+
+    public void setStatoAttivita(StatoAttivita statoAttivita) {
+        this.statoAttivita = statoAttivita;
+    }
+
     public Biglietto emettiBiglietto() {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
             return new Biglietto(this, new TitoloEmessoDAO());
