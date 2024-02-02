@@ -26,6 +26,7 @@ public class Abbonamento extends TitoloEmesso {
         this.scadenza = LocalDateTime.now();
         this.scadenza = calcolaScadenza();
         this.tessera = tessera;
+        this.tessera.setAbbonamento(this);
 
         TitoloEmessoDAO dao = new TitoloEmessoDAO();
         dao.create(this);
@@ -43,7 +44,7 @@ public class Abbonamento extends TitoloEmesso {
         calcolaScadenza();
     }
 
-    public LocalDateTime calcolaScadenza () {
+    public LocalDateTime calcolaScadenza () { //TODO data scadenza
         if (periodicita == Periodicita.SETTIMANALE) {
             return this.scadenza = this.scadenza.plusDays(7);
         } else if (periodicita == Periodicita.MENSILE) {
@@ -74,7 +75,6 @@ public class Abbonamento extends TitoloEmesso {
     public String toString() {
         return "Abbonamento{" +
                 "periodicita=" + periodicita +
-                ", tessera=" + tessera +
                 ", scadenza=" + scadenza +
                 '}';
     }

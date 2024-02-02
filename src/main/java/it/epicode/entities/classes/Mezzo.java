@@ -113,6 +113,23 @@ public class Mezzo {
         biglietto.cambiaValidita();
         titoloEmessoDAO.update(biglietto);
     }
+    public void controllaAbbonamento(Tessera tessera){
+        try {
+            if (tessera.getScadenza().isAfter(LocalDateTime.now())) {
+                if (tessera.getAbbonamento().getScadenza().isAfter(LocalDateTime.now())) {
+                    System.out.println("L'abbonamento è valido");
+                } else {
+                    System.out.println("l'abbonamento è scaduto");
+                }
+            } else {
+                System.out.println("La Tessera è scaduta");
+            }
+        } catch (NullPointerException e){
+            System.out.println("La Tessera non ha un abbonamento");
+        }
+
+    }
+
 
 
     @Override

@@ -60,8 +60,25 @@ public class Tessera {
         this.scadenza = scadenza;
     }
 
+    public Abbonamento getAbbonamento() {
+        return abbonamento;
+    }
+
+    public void setAbbonamento(Abbonamento abbonamento) {
+        this.abbonamento = abbonamento;
+    }
+
     public void rinnovaTessera() {
         LocalDateTime nuovaDataScadenza = LocalDateTime.now();
         this.scadenza = this.scadenza.plusDays(365);
+    }
+
+    @Override
+    public String toString() {
+        return "Tessera{" +
+                "dataEmissione=" + dataEmissione +
+                ", scadenza=" + scadenza +
+                ", abbonamento=" + abbonamento +
+                '}';
     }
 }

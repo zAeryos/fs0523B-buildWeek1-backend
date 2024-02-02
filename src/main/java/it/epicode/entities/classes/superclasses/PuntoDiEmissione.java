@@ -50,7 +50,7 @@ public abstract class PuntoDiEmissione {
 
     public Biglietto emettiBiglietto() {
         if (this.statoAttivita == StatoAttivita.APERTO || this.statoAttivita == StatoAttivita.ATTIVO) {
-            return new Biglietto(this, LocalDateTime.now(), new TitoloEmessoDAO()); //TODO aggiungere il titolo emesso alla lista di titoli emessi
+            return new Biglietto(this, LocalDateTime.now(), new TitoloEmessoDAO());
         } else if (this.statoAttivita == StatoAttivita.CHIUSO) {
             System.out.println("Il negozio è chiuso, torna quando siamo aperti.");
             return null;

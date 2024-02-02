@@ -45,5 +45,4 @@ public class TesseraDAO {
         et.commit();
     }
 
-    //TODO Bisogna controllare se l'abbonamento collegato a questa tessera è valido
 }

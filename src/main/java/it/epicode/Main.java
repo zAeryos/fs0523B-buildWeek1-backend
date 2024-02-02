@@ -27,9 +27,10 @@ public class Main {
 //        Utente          utente3         = new Utente("Emanuele", "Barone", LocalDate.of(1996, 5, 22), "barone.emanuele8@gmail.com");
 //        Biglietto       biglietto1      = new Biglietto(distributoreAutomatico, LocalDateTime.now());
 //        Biglietto       biglietto2      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now());
-//        Tessera         tessera         = new Tessera(utente1);
-//        Abbonamento     abbonamento     = new Abbonamento(distributoreAutomatico, LocalDateTime.now(), Periodicita.MENSILE, tessera);
-//
+        Tessera         tessera         = new Tessera(utente1);
+        Abbonamento     abbonamento     = new Abbonamento(distributoreAutomatico, LocalDateTime.of(2020,5,16,6,20), Periodicita.SETTIMANALE, tessera);
+        System.out.println(tessera);
+
 //        puntoDiEmissioneDAO.create(distributoreAutomatico);
 //        utenteDAO.create(utente1);
 //        tesseraDAO.create(tessera);
@@ -42,13 +43,13 @@ public class Main {
 
         /* MEZZI - TRATTE */
 
-//        MezzoDAO mezzoDAO = new MezzoDAO();
+        MezzoDAO mezzoDAO = new MezzoDAO();
 //        TrattaDAO trattaDAO = new TrattaDAO();
 //        TratteEffettuateDAO tratteEffettuateDAO = new TratteEffettuateDAO();
 //        ManutenzioneDAO manutenzioneDAO = new ManutenzioneDAO();
 //
-//        Tratta tratta = new Tratta("Roma", "Milano", 220);
-//        Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta, mezzoDAO);
+        Tratta tratta = new Tratta("Roma", "Milano", 220);
+        Mezzo mezzo = new Mezzo(40, StatoServizio.IN_SERVIZIO, TipoMezzo.AUTOBUS, tratta, mezzoDAO);
 //        TratteEffettuate tratteEffettuate = new TratteEffettuate(mezzo, tratta, LocalDateTime.now(), 235 );
 //        Manutenzione manutenzione = new Manutenzione(LocalDate.now(), mezzo, manutenzioneDAO, mezzoDAO);
 //
@@ -65,7 +66,12 @@ public class Main {
 
 //        rivenditoreAutorizzato.emettiBiglietto();
 //        rivenditoreAutorizzato.emettiAbbonamento(Periodicita.SETTIMANALE,tessera);
-            rivenditoreAutorizzato.emettiTessera(utente1);
+//            rivenditoreAutorizzato.emettiTessera(utente1);
 //         distributoreAutomatico.emettiBiglietto();
+
+
+//        abbonamento.setScadenza(LocalDateTime.of(2020,2,1,1,1));
+        mezzo.controllaAbbonamento(tessera);
+
     }
 }
