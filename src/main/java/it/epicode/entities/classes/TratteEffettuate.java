@@ -85,6 +85,4 @@ public class TratteEffettuate {
                 ", tempoEffettivoTratta="   + tempoEffettivoTratta +
                 '}';
     }
-
-    //TODO metodo randomTempoEffettivo
 }

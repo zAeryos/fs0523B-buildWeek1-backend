@@ -100,7 +100,7 @@ public class Mezzo {
 
     public TratteEffettuate effettuaTratta(Tratta tratta, int tempoEffettivoTratta){
         if (this.statoServizio == StatoServizio.IN_SERVIZIO) {
-            TratteEffettuate trattaEffettuata = new TratteEffettuate(this, tratta, LocalDateTime.now(), tempoEffettivoTratta);
+            TratteEffettuate trattaEffettuata = new TratteEffettuate(this, tratta, LocalDateTime.now());
             System.out.println(trattaEffettuata);
             return  trattaEffettuata;
         } else {
@@ -110,7 +110,6 @@ public class Mezzo {
     }
 
     //TODO metodo per vidimare il biglietto
-
 
     @Override
     public String toString() {
