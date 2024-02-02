@@ -58,6 +58,7 @@ public class Main {
         titoloEmessoDAO.bigliettiVidimatiPerTempo(LocalDateTime.of(2024,01,01,0,0), LocalDateTime.of(2024, 02,02,0,0));
         System.out.println(titoloEmessoDAO.bigliettiVidimatiPerMezzo(mezzo));
         System.out.println(mezzoDAO.contatoreTratteEffettuate(mezzoDAO.getById(3902)));
+        System.out.println(tratteEffettuateDAO.getTempoEffettivoTratta(4052));
 
 
 
