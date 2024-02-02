@@ -43,7 +43,9 @@ public class Biglietto extends TitoloEmesso {
 
     @Override
     public String toString() {
-        return "Biglietto{" +
+        return "Biglietto{" + "id=" + getId() +
+                ", puntoDiEmissione=" + getPuntoDiEmissione() +
+                ", dataEmissione=" + getDataEmissione() +
                 "valido=" + valido +
                 '}';
     }

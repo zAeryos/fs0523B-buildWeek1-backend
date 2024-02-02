@@ -10,6 +10,7 @@ import it.epicode.entities.enums.TipoMezzo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -56,9 +57,21 @@ public class Main {
 
 
         Biglietto       biglietto3      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now(), titoloEmessoDAO);
+        Biglietto       biglietto4      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now(), titoloEmessoDAO);
+        Biglietto       biglietto5      = new Biglietto(rivenditoreAutorizzato, LocalDateTime.now(), titoloEmessoDAO);
         System.out.println("Il biglietto è: " + biglietto3 );
         mezzo.vidimaBiglietto(biglietto3,titoloEmessoDAO);
         System.out.println("biglietto vidimato: " + biglietto3);
+
+        List<TitoloEmesso> bigliettiP = titoloEmessoDAO.getPeriodoBiglietti(LocalDateTime.of(2024,1,1,0,0), LocalDateTime.of(2024, 2, 29,0,0));
+
+        System.out.println(bigliettiP);
+
+        System.out.println("Biglietti emessi da: " + rivenditoreAutorizzato);
+        System.out.println(titoloEmessoDAO.getBigliettiPuntoEmissione(rivenditoreAutorizzato));
+
+        System.out.println(titoloEmessoDAO.getBigliettiLuogoEmissione(rivenditoreAutorizzato, LocalDateTime.of(2024,1,1,0,0), LocalDateTime.of(2024,2,3,0,0)));
+
 
     }
 }

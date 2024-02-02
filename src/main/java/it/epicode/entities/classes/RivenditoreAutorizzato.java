@@ -61,4 +61,13 @@ public class RivenditoreAutorizzato extends PuntoDiEmissione {
     public void setIndirizzoRivenditore(String indirizzoRivenditore) {
         this.indirizzoRivenditore = indirizzoRivenditore;
     }
+
+    @Override
+    public String toString() {
+        return "RivenditoreAutorizzato{" +
+                "nomeRivenditore='" + nomeRivenditore + '\'' +
+                ", luogoRivenditore='" + luogoRivenditore + '\'' +
+                ", indirizzoRivenditore='" + indirizzoRivenditore + '\'' +
+                '}';
+    }
 }

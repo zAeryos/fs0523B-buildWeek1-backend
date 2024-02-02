@@ -1,11 +1,16 @@
 package it.epicode.dao;
 
 import it.epicode.entities.classes.Manutenzione;
+import it.epicode.entities.classes.superclasses.PuntoDiEmissione;
 import it.epicode.entities.classes.superclasses.TitoloEmesso;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
 /* WORKS */
 public class TitoloEmessoDAO {
     private EntityManagerFactory    emf;
@@ -45,7 +50,28 @@ public class TitoloEmessoDAO {
 
     }
 
-    //TODO query per controllare tutti i biglietti emessi in un periodo di tempo *
-    //TODO query per controllare tutti i biglietti emessi dato un punto di emissione *
-    //TODO query per controllare tutti i biglietti emessi dato un punto di emissione ed un periodo di tempo *
+    public List<TitoloEmesso> getPeriodoBiglietti(LocalDateTime dataInizio, LocalDateTime dataFine) {
+
+        return em.createQuery("select t from TitoloEmesso t where t.dataEmissione between :dataInizio and :dataFine", TitoloEmesso.class)
+                .setParameter("dataInizio", dataInizio)
+                .setParameter("dataFine", dataFine)
+                .getResultList();
+    }
+
+    public List<TitoloEmesso> getBigliettiPuntoEmissione(PuntoDiEmissione puntoDiEmissione) {
+
+        return em.createQuery("select t from TitoloEmesso t where t.puntoDiEmissione = :puntoDiEmissione", TitoloEmesso.class)
+                .setParameter("puntoDiEmissione", puntoDiEmissione)
+                .getResultList();
+    }
+
+    public List<TitoloEmesso> getBigliettiLuogoEmissione(PuntoDiEmissione puntoDiEmissione, LocalDateTime dataInizio, LocalDateTime dataFine) {
+
+        return em.createQuery("select t from TitoloEmesso t where t.puntoDiEmissione = :puntoDiEmissione and t.dataEmissione between :dataInizio and :dataFine", TitoloEmesso.class)
+                .setParameter("puntoDiEmissione", puntoDiEmissione)
+                .setParameter("dataInizio", dataInizio)
+                .setParameter("dataFine", dataFine)
+                .getResultList();
+    }
+
 }
